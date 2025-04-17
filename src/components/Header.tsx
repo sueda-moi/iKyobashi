@@ -32,64 +32,41 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen, toggleMenu }) => {
   ];
 
   return (
-    <header
-      className={clsx(
-        'fixed top-0 left-0 right-0 z-[999] flex items-center justify-between px-6 py-4 transition-all duration-300',
-        scrolled ? 'bg-black/80 shadow-md' : 'bg-transparent',
-      )}
-    >
+    <header className={`${scrolled ? 'scrolled' : ''}`}>
+
       {/* Logo */}
       <div className="flex-shrink-0">
-        <Image src="/image/logo.png" alt="Logo" width={120} height={50} />
+        <Image src="/image/logo.png" alt="Logo" width={150} height={100} />
       </div>
 
-      {/* Hamburger Icon */}
-      <div
-        className="md:hidden cursor-pointer"
-        onClick={toggleMenu}
-      >
+      {/* Add onClick handler to toggle menu */}
+      <div className={`menu-icon ${isMenuOpen ? 'open' : ''}`} onClick={toggleMenu}>
+        <span>
         <FiAlignJustify size={24} color="white" />
+        </span>
       </div>
 
       {/* Navigation */}
-      <AnimatePresence>
-        {isMenuOpen && (
-          <motion.nav
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.2 }}
-            className="flex flex-col absolute top-full left-0 w-full bg-black/90 p-4 md:hidden text-white text-sm font-medium gap-4 z-50"
-          >
-            <ul className="flex flex-col gap-4">
-              {navItems.map((item) => {
-                const isActive = pathname === item.path;
-                return (
-                  <li key={item.path} className="list-none">
-                    {isActive ? (
-                      <span className="text-green-300 font-bold pointer-events-none relative after:absolute after:left-0 after:bottom-[-2px] after:h-[2px] after:w-full after:bg-green-300 after:scale-x-100">
-                        {item.label}
-                      </span>
-                    ) : (
-                      <Link
-                        href={item.path}
-                        onClick={() => {
-                          // Close the menu first, then navigate.
-                          toggleMenu();
-                        }}
-                        className="relative text-white hover:text-green-300 transition-all duration-200 after:absolute after:left-0 after:bottom-[-2px] after:h-[2px] after:w-full after:bg-green-300 after:scale-x-0 hover:after:scale-x-100 after:origin-left after:transition-transform after:duration-300"
-                      >
-                        {item.label}
-                      </Link>
-                    )}
-                  </li>
-                );
-              })}
-            </ul>
-
-          </motion.nav>
-        )}
-      </AnimatePresence>
+      <nav className={`navbar ${isMenuOpen ? 'open' : ''}`}>
+        <ul className="nav-list">
+        {navItems.map((item) => {
+            const isActive = location.pathname === item.path;
+            return (
+              <li key={item.path}>
+                {isActive ? (
+                  <span className="nav-link active">{item.label}</span>
+                ) : (
+                  <Link href={item.path} 
+                  className="nav-link"
+                  onClick={toggleMenu}>
+                    {item.label}
+                  </Link>
+                )}
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
 
 
     </header>

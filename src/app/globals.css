@@ -16,6 +16,28 @@ html, body {
   margin: 0;  
 }
 
+header {
+  position: fixed;  /* Ensures the header is positioned on top of the video */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;  /* Bring header to the top, above the video */
+  background-color: transparent;  /* Optional: background color with opacity */
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+header img {
+  width: auto; 
+  height: 100%; 
+  object-fit: contain;
+}
+
+
+
 .layout-root {
   min-height: 100vh; 
   display: flex;
@@ -69,6 +91,133 @@ html, body {
   .layout-root main {
     flex: 1;
   }
+
+/* Make the navbar align properly */
+.nav-list {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-link {
+  position: relative;
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  padding-bottom: 5px;
+  transition: all 0.3s ease;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 2px;
+  background-color: white;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease-in-out;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  transform: scaleX(1);
+  background-color: #4dd4a1;
+}
+
+.nav-link.active {
+  font-weight: bold;
+  color: #4dd4a1; 
+  pointer-events: none;
+  cursor: default;
+}
+
+.nav-link.active::after {
+  width: 100%;
+  background-color: #4dd4a1; 
+}
+
+
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  background-color: transparent;
+  padding: 10px;
+}
+
+.navbar ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+  margin-left: auto; 
+}
+
+.navbar li {
+  margin: 0 10px;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+}
+
+
+/* Hide the navbar on small screens and use a hamburger icon */
+.navbar.open {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-icon {
+  display: none;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.menu-icon .bar {
+  width: 30px;
+  height: 5px;
+  background-color: #fff;
+  margin: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .navbar {
+    display: none;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    right: 0;
+    background-color: transparent;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navbar.open {
+    display: flex;
+  }
+
+  .menu-icon {
+    display: block;
+  }
+
+  .menu-icon.open .bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  .menu-icon.open .bar:nth-child(2) {
+    opacity: 0;
+  }
+  .menu-icon.open .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+}
   
   
 

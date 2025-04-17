@@ -23,7 +23,7 @@ export default function RootLayout({
 
   return (
     <html lang="ja">
-      <body className="min-h-screen flex flex-col w-full">
+      <body className="min-h-screen flex flex-col w-full relative">
         <Header isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
         <AnimatePresence mode="wait">
           {loading && <LoadingScreen key="loader" />}
