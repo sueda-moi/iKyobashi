@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+html, body {
+  height: 100%; 
+  width: 100%; 
+  margin: 0;  
+}
+
+.layout-root {
+  min-height: 100vh; 
+  display: flex;
+  flex-direction: column;
+}
+
+.layout-root main {
+  flex: 1; 
+}
+
+
+
+
+  .App-footer {
+    position: relative;
+    height: 100px;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: flex-end;
+    background-color: transparent;
+    color: white;
+    z-index: 150;
+    padding: 20px;
+    transition: background-color 0.3s ease;
+  }
+
+  .App-footer-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .App-footer.floating {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+  }
+
+  .App-footer.scrolled {
+    background-color: rgba(0, 0, 0, 0.8); 
+  }
+
+  .layout-root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .layout-root main {
+    flex: 1;
+  }
+  
+  
+
+  
+  
+    

@@ -1,0 +1,73 @@
+'use client';
+
+import './Pg002.css';
+import ScrollLottie from '../../components/ScrollLottie/ScrollLottie';
+import { useRef } from 'react';
+
+
+const Pg002: React.FC = () => {
+  const sectionARef = useRef<HTMLDivElement>(null);
+  const sectionBRef = useRef<HTMLDivElement>(null);
+  const sectionCRef = useRef<HTMLDivElement>(null);
+
+  const scrollToSection = (ref: React.RefObject<HTMLDivElement | null>) => {
+    if (ref.current) {
+      ref.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+  
+  return (
+      <div className="container">
+        <div className="summary-container">
+          <img src="/image/sakura.jpg" alt="imgSummary" id='summary-img' />
+          <div className="summaryText-container">
+            <h1>トップメッセージ</h1>
+            <p>私たちの企業の根幹には、自由、未来、そして輝くという価値観があります。私たちはクライアントの自由な選択を尊重し、彼らの未来をサポートすることを使命としています。また、私たちは常に快活な気風のもとで働き、率直な提言を行い、新しい発想を生み出すことに取り組んでいます。私たちのチームは創造力に満ち、柔軟な解決策を提供することで、お客様のニーズに応えます。</p>
+            <p>私たちは不動産業界での豊富な経験と専門知識を持っており、お客様のニーズに合わせた最適な不動産ソリューションを提供します。私たちの目標は、お客様の期待を超える価値を提供し、彼らの人生やビジネスの成功に貢献することです。</p>
+            <p>私たちの情熱と専門知識で、東京の不動産市場でのお手伝いをいたします。私たちと一緒に未来を輝かせましょう。</p>
+          </div>
+          <div className="card-container">
+            <div className="info-card" onClick={() => scrollToSection(sectionARef)}>
+              <h3>業務内容</h3>
+            </div>
+            <div className="info-card" onClick={() => scrollToSection(sectionBRef)}>
+              <h3>会社概要</h3>
+            </div>
+            <div className="info-card" onClick={() => scrollToSection(sectionCRef)}>
+              <h3>カスタマーレビュー</h3>
+            </div>
+          </div>
+          <ScrollLottie />
+        </div>
+
+        <div className="detail-container">
+          <div className="section-detail" ref={sectionARef}>
+            <h2>業務内容</h2>
+            <p>SERVICES</p>
+          </div>
+
+          <div className="section-detail" ref={sectionBRef}>
+            <h2>会社概要</h2>
+            <p>Company Overview</p>
+          </div>
+
+          <div className="section-detail" ref={sectionCRef}>
+            <h2>カスタマーレビュー</h2>
+            <p>TESTIMONIALS</p>
+          </div>
+
+
+        </div>
+
+              
+
+
+
+
+      </div>
+
+  )
+
+};
+
+export default Pg002;

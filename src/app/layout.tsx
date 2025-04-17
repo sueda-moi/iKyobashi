@@ -1,0 +1,47 @@
+'use client';
+
+import './globals.css';
+import { usePathname } from 'next/navigation';
+import { AnimatePresence, motion } from 'framer-motion';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import LoadingScreen from '@/components/LoadingScreen/LoadingScreen';
+import { usePageTransition } from '@/hooks/usePageTransition';
+import { useState } from 'react';
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const pathname = usePathname();
+  const { loading } = usePageTransition(1200); 
+  const isHomeScreenPage = pathname === '/Pg001';
+
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const toggleMenu = () => setIsMenuOpen((prev) => !prev);
+
+  return (
+    <html lang="ja">
+      <body className="min-h-screen flex flex-col w-full">
+        <Header isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
+        <AnimatePresence mode="wait">
+          {loading && <LoadingScreen key="loader" />}
+          {!loading && (
+            <motion.div
+              key={pathname}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.4 }}
+              className="flex-1"
+            >
+              <main className="flex-1 w-full">{children}</main>
+            </motion.div>
+          )}
+        </AnimatePresence>
+        <Footer floating={isHomeScreenPage} />
+      </body>
+    </html>
+  );
+}
