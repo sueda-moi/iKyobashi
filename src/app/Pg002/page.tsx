@@ -1,12 +1,13 @@
 'use client';
 
 import './Pg002.css';
-import ScrollLottie from '../../components/ScrollLottie/ScrollLottie';
 import { useRef } from 'react';
 import React, { useState } from 'react';
 import clsx from 'clsx';
 import ExpandableTab from '@/components/ExpandableTab/ExpandableTab';
+import dynamic from 'next/dynamic';
 
+const ScrollLottie = dynamic(() => import('../../components/ScrollLottie/ScrollLottie'), { ssr: false });
 
 const Pg002: React.FC = () => {
   const sectionARef = useRef<HTMLDivElement>(null);
@@ -40,12 +41,12 @@ const Pg002: React.FC = () => {
               <h3>カスタマーレビュー</h3>
             </div>
           </div>
-          <ScrollLottie />
+          <ScrollLottie onClick={() => scrollToSection(sectionARef)} />
         </div>
 
         <div className="detail-container">
           <div className="section-detail section-card" ref={sectionARef}>
-            <p><span className="card-title">業務内容</span><span className="card-subtitle">SERVICES</span></p>
+            <p><span className="card-title">業務内容{" "}</span><span className="card-subtitle">SERVICES</span></p>
             <ExpandableTab>
               <p>不動産売買、賃貸仲介、資産運用アドバイスなど多岐に渡るサービスを提供しています。</p>
               <ul>
@@ -57,7 +58,7 @@ const Pg002: React.FC = () => {
           </div>
 
           <div className="section-detail section-card" ref={sectionBRef}>
-            <p><span className="card-title">会社概要</span><span className="card-subtitle">Company Overview</span></p>
+            <p><span className="card-title">会社概要{" "}</span><span className="card-subtitle">Company Overview</span></p>
             <ExpandableTab>
               <p>不動産売買、賃貸仲介、資産運用アドバイスなど多岐に渡るサービスを提供しています。</p>
               <ul>
@@ -69,7 +70,7 @@ const Pg002: React.FC = () => {
           </div>
 
           <div className="section-detail section-card" ref={sectionCRef}>
-            <p><span className="card-title">カスタマーレビュー</span><span className="card-subtitle">TESTIMONIALS</span></p>
+            <p><span className="card-title">カスタマーレビュー{" "}</span><span className="card-subtitle">TESTIMONIALS</span></p>
 
             <ExpandableTab>
               <p>不動産売買、賃貸仲介、資産運用アドバイスなど多岐に渡るサービスを提供しています。</p>

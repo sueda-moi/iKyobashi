@@ -7,13 +7,9 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import LoadingScreen from '@/components/LoadingScreen/LoadingScreen';
 import { usePageTransition } from '@/hooks/usePageTransition';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({children,}: {children: React.ReactNode;}) {
   const pathname = usePathname();
   const { loading } = usePageTransition(1200); 
   const isHomeScreenPage = pathname === '/Pg001';
@@ -21,8 +17,24 @@ export default function RootLayout({
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
 
+  const [isLoaded, setIsLoaded] = useState(false);
+  useEffect(() => {
+    const handlePageLoad = () => {
+      setTimeout(() => {
+        setIsLoaded(true); 
+      }, 1000); 
+    };
+
+    if (document.readyState === 'complete') {
+      handlePageLoad();
+    } else {
+      window.addEventListener('load', handlePageLoad);
+      return () => window.removeEventListener('load', handlePageLoad);
+    }
+  }, []);
+
   return (
-    <html lang="ja">
+    <html lang="ja"> 
       <body className="min-h-screen flex flex-col w-full relative">
         <Header isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
         <AnimatePresence mode="wait">
