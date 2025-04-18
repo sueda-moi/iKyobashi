@@ -50,7 +50,7 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen, toggleMenu }) => {
       <nav className={`navbar ${isMenuOpen ? 'open' : ''}`}>
         <ul className="nav-list">
         {navItems.map((item) => {
-            const isActive = location.pathname === item.path;
+            const isActive = pathname === item.path;
             return (
               <li key={item.path}>
                 {isActive ? (
