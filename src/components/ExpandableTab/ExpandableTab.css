@@ -1,0 +1,24 @@
+
+.expandable-tab {
+    margin-top: 20px;
+  }
+  .tab-header {
+    background: rgba(255, 255, 255, 0.4);
+    padding: 12px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-weight: 500;
+  }
+  .tab-header:hover {
+    background: rgba(255, 255, 255, 0.6);
+  }
+  .tab-content {
+    background: rgba(255, 255, 255, 0.3);
+    margin-top: 10px;
+    padding: 15px 20px;
+    border-radius: 10px;
+    line-height: 1.6;
+    color: #444;
+  }
+  

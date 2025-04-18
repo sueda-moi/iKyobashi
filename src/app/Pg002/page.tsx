@@ -3,6 +3,9 @@
 import './Pg002.css';
 import ScrollLottie from '../../components/ScrollLottie/ScrollLottie';
 import { useRef } from 'react';
+import React, { useState } from 'react';
+import clsx from 'clsx';
+import ExpandableTab from '@/components/ExpandableTab/ExpandableTab';
 
 
 const Pg002: React.FC = () => {
@@ -41,19 +44,41 @@ const Pg002: React.FC = () => {
         </div>
 
         <div className="detail-container">
-          <div className="section-detail" ref={sectionARef}>
-            <h2>業務内容</h2>
-            <p>SERVICES</p>
+          <div className="section-detail section-card" ref={sectionARef}>
+            <p><span className="card-title">業務内容</span><span className="card-subtitle">SERVICES</span></p>
+            <ExpandableTab>
+              <p>不動産売買、賃貸仲介、資産運用アドバイスなど多岐に渡るサービスを提供しています。</p>
+              <ul>
+                <li>住宅・商業用不動産の紹介</li>
+                <li>市場調査と分析</li>
+                <li>海外投資家向け支援</li>
+              </ul>
+            </ExpandableTab>
           </div>
 
-          <div className="section-detail" ref={sectionBRef}>
-            <h2>会社概要</h2>
-            <p>Company Overview</p>
+          <div className="section-detail section-card" ref={sectionBRef}>
+            <p><span className="card-title">会社概要</span><span className="card-subtitle">Company Overview</span></p>
+            <ExpandableTab>
+              <p>不動産売買、賃貸仲介、資産運用アドバイスなど多岐に渡るサービスを提供しています。</p>
+              <ul>
+                <li>住宅・商業用不動産の紹介</li>
+                <li>市場調査と分析</li>
+                <li>海外投資家向け支援</li>
+              </ul>
+            </ExpandableTab>
           </div>
 
-          <div className="section-detail" ref={sectionCRef}>
-            <h2>カスタマーレビュー</h2>
-            <p>TESTIMONIALS</p>
+          <div className="section-detail section-card" ref={sectionCRef}>
+            <p><span className="card-title">カスタマーレビュー</span><span className="card-subtitle">TESTIMONIALS</span></p>
+
+            <ExpandableTab>
+              <p>不動産売買、賃貸仲介、資産運用アドバイスなど多岐に渡るサービスを提供しています。</p>
+              <ul>
+                <li>住宅・商業用不動産の紹介</li>
+                <li>市場調査と分析</li>
+                <li>海外投資家向け支援</li>
+              </ul>
+            </ExpandableTab>
           </div>
 
 
