@@ -16,7 +16,13 @@ const ExpandableTab: React.FC<ExpandableTabProps> = ({ children }) => {
   return (
     <div className="expandable-tab">
       <div className="tab-header" onClick={toggleExpansion}>
-        <h3>{isExpanded ? '閉じる' : 'もっと見る'}</h3>
+        <p  style={{
+            textAlign: 'right',
+            fontSize: '10pt',
+            fontFamily: '"Meiryo UI", sans-serif',
+          }}>
+            {isExpanded ? '閉じる' : 'もっと見る'}
+        </p>
       </div>
       {isExpanded && (
         <div className="tab-content">

@@ -221,6 +221,36 @@ header.scrolled {
     transform: rotate(-45deg) translate(5px, -5px);
   }
 }
+
+.learnMore-bt {
+  background-color: transparent;
+  border: 2px solid #e5e8eb;
+  color: #e4e9ec;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+.summary-container {
+  display: flex;
+  width: 100%;
+  height: 600px;
+  padding-bottom: 60px ;
+}
+
+.summary-img {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  display: block; 
+  z-index: 100;
+}
   
   
 
