@@ -3,6 +3,7 @@
 import React, { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
+import ImageCarousel from '@/components/ImageCarousel/ImageCarousel';
 
 const Pg001: React.FC = () => {
   const router = useRouter();
@@ -21,7 +22,7 @@ const Pg001: React.FC = () => {
 
   return (
     <div className="relative w-full h-screen overflow-hidden flex items-center justify-center">
-      <video
+      {/* <video
         autoPlay
         loop
         muted
@@ -29,26 +30,27 @@ const Pg001: React.FC = () => {
         className="absolute inset-0 w-full h-full object-cover z-0"
       >
         <source src="/video/Gaut-1.mp4" type="video/mp4" />
-      </video>
+      </video> */}
+      <ImageCarousel />
 
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white z-10">
-        <motion.p
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.6 }}
-          className="text-lg tracking-widest text-white !important"
-        >
-          WELCOME
-        </motion.p>
+      <motion.p
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2, duration: 0.6 }}
+        className="text-lg tracking-widest gradient-text"
+      >
+        WELCOME
+      </motion.p>
 
-        <motion.h1
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 0.6 }}
-          className="text-4xl md:text-5xl font-bold mt-4 text-white !important"
-        >
-          自由に、未来に、輝く
-        </motion.h1>
+      <motion.h1
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.4, duration: 0.6 }}
+        className="text-4xl md:text-5xl font-bold mt-4 gradient-text"
+      >
+        自由に、未来に、輝く
+      </motion.h1>
 
         <motion.button
           onClick={handleClick}

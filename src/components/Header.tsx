@@ -36,7 +36,7 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen, toggleMenu }) => {
 
       {/* Logo */}
       <div className="flex-shrink-0">
-        <Image src="/image/logo.png" alt="Logo" width={150} height={100} />
+        <Image src="/image/headerbannerlogo.jpg" alt="Logo" width={75} height={75} />
       </div>
 
       {/* Add onClick handler to toggle menu */}
