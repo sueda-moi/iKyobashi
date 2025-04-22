@@ -240,18 +240,26 @@ header.scrolled {
 .summary-container {
   display: flex;
   width: 100%;
-  height: 600px;
-  padding-bottom: 60px ;
+  height: 800px;
+  padding-bottom: 60px;
 }
 
 .summary-img {
   width: 100%;
-  height: 600px;
+  height: 800px;
   object-fit: cover;
   display: block; 
   z-index: 100;
 }
   
+.scroll-lottie-wrapper {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+}
+
   
 
   

@@ -1,7 +1,7 @@
 'use client';
 
 import './Pg002.css';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import React, { useState } from 'react';
 import clsx from 'clsx';
 import ExpandableTab from '@/components/ExpandableTab/ExpandableTab';
@@ -13,6 +13,28 @@ const Pg002: React.FC = () => {
   const sectionARef = useRef<HTMLDivElement>(null);
   const sectionBRef = useRef<HTMLDivElement>(null);
   const sectionCRef = useRef<HTMLDivElement>(null);
+
+  const [isAtBottom, setIsAtBottom] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const fullHeight = document.documentElement.scrollHeight;
+  
+      //スクロール位置（scrollTop）と画面の高さ（windowHeight）を足した値が、
+      // ページ全体の高さ（fullHeight）から少しの余裕（例：20px）を引いた値以上になったら、
+      // 「一番下までスクロールされた」と判断します。
+      if (scrollTop + windowHeight >= fullHeight - 20) {
+        setIsAtBottom(true);
+      } else {
+        setIsAtBottom(false);
+      }
+    };
+  
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const scrollToSection = (ref: React.RefObject<HTMLDivElement | null>) => {
     if (ref.current) {
@@ -41,8 +63,14 @@ const Pg002: React.FC = () => {
               <h3>企業写真</h3>
             </div>
           </div>
-          <ScrollLottie onClick={() => scrollToSection(sectionARef)} />
+          
         </div>
+
+        {!isAtBottom && (
+          <div className="scroll-lottie-wrapper">
+            <ScrollLottie onClick={() => scrollToSection(sectionARef)} />
+          </div>
+        )}
 
         <div className="detail-container">
           <div className="section-detail section-card" ref={sectionARef}>

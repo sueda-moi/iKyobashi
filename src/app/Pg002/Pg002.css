@@ -5,9 +5,8 @@
 }
   .summaryText-container {
     position: absolute;
-    top: 55%;
+    top: 14%;
     left: 5%;
-    transform: translateY(-50%);
     z-index: 102;
     color: whitesmoke;
     text-align: left;
@@ -19,35 +18,8 @@
     padding: 20px;
     overflow: hidden;
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
-    animation: fadeInRight 1s ease-out;
   }
   
-  .summaryText-container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.1) 0%,    /* from transparent to 0.5transparent */
-      rgba(0, 0, 0, 0.5) 60%,   /* to a little bit black*/
-      rgba(0, 0, 0, 0.1) 100%   /* back to transparent */
-    );
-    z-index: 101;
-  }
-
-  @keyframes fadeInUp {
-    0% {
-      opacity: 0;
-      transform: translateY(-50%) translateX(30px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(-50%) translateX(0);
-    }
-  }
   /*for smartphone*/
   @media (max-width: 768px) {
     .summaryText-container {
@@ -62,7 +34,7 @@
 
   .card-container {
     position: absolute;
-    top: 25%;
+    top: 14%;
     right: 5%;
     z-index: 102;
     display: flex;
