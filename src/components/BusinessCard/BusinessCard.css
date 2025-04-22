@@ -1,0 +1,48 @@
+/* components/BusinessCard/BusinessCard.css */
+.business-card {
+    background: white;
+    padding: 2rem;
+    text-align: center;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .business-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  .icon-wrapper {
+    margin-bottom: 1rem;
+  }
+  
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  
+  .card-description {
+    word-break: break-word; /* 長い単語でも折り返して表示する */
+    white-space: pre-wrap;  /* 改行や空白をそのまま表示する */
+    overflow-wrap: break-word; /* 単語の途中でも折り返し可能にする */
+    max-width: 100%;         /* 親要素の幅を超えないようにする */
+    line-height: 1.5;        /* 行間を少し広めにして読みやすくする */
+  }
+  
+  
+  .read-button {
+    display: inline-block;
+    border: 1px solid black;
+    padding: 0.5rem 1.2rem;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    transition: background 0.3s, color 0.3s;
+  }
+  
+  .read-button:hover {
+    background: black;
+    color: white;
+  }
+  

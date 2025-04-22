@@ -6,8 +6,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { FiAlignJustify } from 'react-icons/fi';
-import clsx from 'clsx';
-import { motion, AnimatePresence } from 'framer-motion';
 
 interface HeaderProps {
   isMenuOpen: boolean;

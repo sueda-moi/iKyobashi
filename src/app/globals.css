@@ -51,8 +51,9 @@ header.scrolled {
   flex: 1; 
 }
 
-
-
+.childContent{
+  padding: 60px 120px 120px 120px; 
+}
 
 .App-footer {
   position: relative; /* 相対位置指定（他の要素との重なりを制御） */
