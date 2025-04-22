@@ -11,7 +11,8 @@ import { useEffect, useState } from 'react';
 
 export default function RootLayout({children,}: {children: React.ReactNode;}) {
   const pathname = usePathname();
-  const { loading } = usePageTransition(1200); 
+  const LOADING_DURATION = 800; // 🔧 ローディング時間（ミリ秒）
+  const { loading } = usePageTransition(LOADING_DURATION);
   const isHomeScreenPage = pathname === '/Pg001';
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -21,8 +22,8 @@ export default function RootLayout({children,}: {children: React.ReactNode;}) {
   useEffect(() => {
     const handlePageLoad = () => {
       setTimeout(() => {
-        setIsLoaded(true); 
-      }, 1000); 
+        setIsLoaded(true); // ページ読み込み後、遅延してローディング解除
+      }, LOADING_DURATION); // ⏱️ 時間統一
     };
 
     if (document.readyState === 'complete') {
