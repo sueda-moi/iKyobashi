@@ -1,8 +1,9 @@
-// components/Footer.tsx
 'use client';
 
 import React, { useEffect, useState } from 'react';
 import clsx from 'clsx';
+import Image from 'next/image';
+import { usePathname } from 'next/navigation'; // 現在のパスを取得するためのフック
 
 interface FooterProps {
   floating?: boolean;
@@ -10,7 +11,10 @@ interface FooterProps {
 
 const Footer: React.FC<FooterProps> = ({ floating = false }) => {
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname(); // 現在のページのパスを取得
+  const isPg001 = pathname === '/Pg001'; // パスが /Pg001 かどうかを判定
 
+  // スクロールイベントを監視し、スクロール位置が50pxを超えたら状態を更新
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', onScroll);
@@ -18,17 +22,27 @@ const Footer: React.FC<FooterProps> = ({ floating = false }) => {
   }, []);
 
   return (
-    <footer className={`App-footer ${floating ? 'floating' : ''} ${scrolled ? 'scrolled' : ''}`}>
+    <footer className={clsx('App-footer', {
+      floating, // `floating` プロップが true の場合に特定のスタイルを適用
+      scrolled, // スクロールに応じてクラス切り替え
+    })}>
+      {/* ロゴ画像：Pg001 ページでは非表示 */}
+      {!isPg001 && (
+        <div className="flex-shrink-0">
+          <Image src="/image/footerImg.jpg" alt="Logo" width={75} height={75} />
+        </div>
+      )}
       <div className="App-footer-content">
         <div>
-          <p>営業日：月・火・木・金・土曜日(GW・夏休・年末年始を除く) </p>
-          <p>営業時間：10：00から19：00まで</p>
-          <p>東京都新宿区高田馬場1-33-15　後楽園ビル302</p>
+          <p>東京都知事（1）第108005号</p>
+          <p>京喬不動産株式会社 KEIKYO REAL ESTATE CO.,LTD.</p>
+          <p>T 03-6228-3286　F 03-6736-0422　M 080-5659-1464</p>
+          <p>E-MAIL WUJUNRONG@MARSCAPITALJP.COM</p>
         </div>
-        <div style={{textAlign: 'right'}}>
-          <p>Tel：03-5291-7330</p>
-          <p>株式会社東進グループ Toshin Group Co., Ltd.</p>
-          <p>&copy; TOSHINGROUP CO.,LTD. (C) ALL RIGHTS RESERVED</p>
+        <div style={{ textAlign: 'right' }}>
+          <p>〒100-0005 東京都千代田区丸の内3丁目4-2 新日石ビルヂング7階713</p>
+          <p>〒103-0002 東京都中央区日本橋馬喰町1丁目12-7 シティハイツ日本橋202</p>
+          <p>&copy; KEIKYO REAL ESTATE CO.,LTD. ALL RIGHTS RESERVED</p>
         </div>
       </div>
     </footer>

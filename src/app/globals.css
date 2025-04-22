@@ -54,18 +54,19 @@ header.scrolled {
 
 
 
-  .App-footer {
-    position: relative;
-    height: 100px;
-    font-size: 0.8rem;
-    display: flex;
-    align-items: flex-end;
-    background-color: transparent;
-    color: white;
-    z-index: 150;
-    padding: 20px;
-    transition: background-color 0.3s ease;
-  }
+.App-footer {
+  position: relative; /* 相対位置指定（他の要素との重なりを制御） */
+  font-size: 0.8rem;  /* フッターの文字サイズを小さめに設定 */
+  display: flex;      /* Flexbox レイアウトを使用 */
+  flex-direction: column; /* 垂直方向に要素を並べる */
+  justify-content: flex-end; /* 要素を下側に配置（下揃え） */
+  background-color: transparent; /* 背景は透明に */
+  color: white; /* 文字色は白に */
+  z-index: 150; /* 重なり順を指定（ヘッダーなどと干渉しないように） */
+  padding: 20px 20px 40px; /* 上・左右に20px、下に40pxの余白を設定 */
+  transition: background-color 0.3s ease; /* 背景色の変化にアニメーション効果をつける */
+}
+
 
   .App-footer-content {
     display: flex;
