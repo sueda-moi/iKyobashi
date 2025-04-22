@@ -4,7 +4,7 @@ import type { Metadata } from 'next';
 
 // サイトのメタ情報（必要に応じて編集してください）
 export const metadata: Metadata = {
-  title: 'My Next.js App',
+  title: '京喬不動産株式会社',
   description: '自由に、未来に、輝く',
 };
 
