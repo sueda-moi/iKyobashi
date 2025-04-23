@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+// import React, { useEffect, useRef, useState } from 'react';
 import BusinessCard from './BusinessCard';
 import {
     RealEstateIcon001,
@@ -57,34 +57,55 @@ const cardData: CardData[] = [
   },
 ];
 
+// const BusinessCarousel: React.FC = () => {
+//   const scrollRef = useRef<HTMLDivElement>(null);
+//   const [paused, setPaused] = useState(false);
+
+//   useEffect(() => {
+//     let frameId: number;
+
+//     const scroll = () => {
+//       if (scrollRef.current && !paused) {
+//         scrollRef.current.scrollLeft += 0.5; // 控制速度
+//       }
+//       frameId = requestAnimationFrame(scroll);
+//     };
+
+//     frameId = requestAnimationFrame(scroll);
+//     return () => cancelAnimationFrame(frameId);
+//   }, [paused]);
+
+//   return (
+//     <div
+//       className="overflow-x-auto whitespace-nowrap"
+//       ref={scrollRef}
+//       onMouseEnter={() => setPaused(true)}
+//       onMouseLeave={() => setPaused(false)}
+//     >
+//       <div className="flex gap-6 px-4">
+//         {cardData.map((card, index) => (
+//           <div key={index} className="min-w-[280px] max-w-[280px] flex-shrink-0">
+//             <BusinessCard {...card} />
+//           </div>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default BusinessCarousel;
+
 const BusinessCarousel: React.FC = () => {
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const [paused, setPaused] = useState(false);
-
-  useEffect(() => {
-    let frameId: number;
-
-    const scroll = () => {
-      if (scrollRef.current && !paused) {
-        scrollRef.current.scrollLeft += 0.5; // 控制速度
-      }
-      frameId = requestAnimationFrame(scroll);
-    };
-
-    frameId = requestAnimationFrame(scroll);
-    return () => cancelAnimationFrame(frameId);
-  }, [paused]);
-
   return (
-    <div
-      className="overflow-x-auto whitespace-nowrap"
-      ref={scrollRef}
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-    >
-      <div className="flex gap-6 px-4">
+    <div className="px-4 py-8">
+      <div className="grid grid-cols-3 gap-6 max-w-6xl mx-auto">
+        {/* {cardData.map((card, index) => (
+          <div key={index}>
+            <BusinessCard {...card} />
+          </div>
+        ))} */}
         {cardData.map((card, index) => (
-          <div key={index} className="min-w-[280px] max-w-[280px] flex-shrink-0">
+          <div key={index} className="h-full">
             <BusinessCard {...card} />
           </div>
         ))}

@@ -29,15 +29,20 @@ const Pg003: React.FC = () => {
         </section>
 
         {/* サービス一覧セクション */}
-        <section className="my-12 px-4">
-          <h2 className="text-2xl font-semibold mb-6 text-center">サービス一覧</h2>
+        {/* <section className="my-12 px-4">
+          <h2 className="text-2xl font-semibold mb-6 text-center">サービス一覧</h2> 
 
-          {/* カルーセルの最大幅を制限し、中央揃えにするラッパー */}
+          カルーセルの最大幅を制限し、中央揃えにするラッパー
           <div className="max-w-screen-lg mx-auto">
             <BusinessCarousel />
           </div>
         </section>
+        */}
 
+        <section className="services-section">
+          <h2 className="text-2xl font-bold text-center mb-8">サービス一覧</h2>
+          <BusinessCarousel />
+        </section>
       </div>
 
 

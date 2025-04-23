@@ -260,6 +260,15 @@ header.scrolled {
   left: 50%;
   transform: translateX(-50%);
   z-index: 999;
+
+  width: 120px;
+  height: 120px;
+  transition: transform 0.3s ease;
+}
+
+.scroll-lottie-wrapper:hover {
+  transform: translateX(-50%) scale(1.1);
+  cursor: pointer;
 }
 
 @keyframes shimmer {

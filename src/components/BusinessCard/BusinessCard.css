@@ -1,48 +1,75 @@
-/* components/BusinessCard/BusinessCard.css */
 .business-card {
-    background: white;
-    padding: 2rem;
-    text-align: center;
-    border-radius: 0.75rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
+  max-width: 280px;
+  margin: 0 auto;
+  background: white;
+  padding: 1.5rem; 
+  text-align: center;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #e0e0e0; 
   
-  .business-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-  }
-  
-  .icon-wrapper {
-    margin-bottom: 1rem;
-  }
-  
-  .card-title {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-  }
-  
-  .card-description {
-    word-break: break-word; /* 長い単語でも折り返して表示する */
-    white-space: pre-wrap;  /* 改行や空白をそのまま表示する */
-    overflow-wrap: break-word; /* 単語の途中でも折り返し可能にする */
-    max-width: 100%;         /* 親要素の幅を超えないようにする */
-    line-height: 1.5;        /* 行間を少し広めにして読みやすくする */
-  }
-  
-  
-  .read-button {
-    display: inline-block;
-    border: 1px solid black;
-    padding: 0.5rem 1.2rem;
-    font-size: 0.85rem;
-    letter-spacing: 1px;
-    transition: background 0.3s, color 0.3s;
-  }
-  
-  .read-button:hover {
-    background: black;
-    color: white;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.business-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.icon-wrapper {
+  margin-bottom: 1rem;
+}
+
+.icon-wrapper svg {
+  width: 40px;   
+  height: 40px;
+}
+
+.card-title {
+  font-size: 1.1rem;      
+  font-weight: 500;          
+  margin-bottom: 0.4rem;
+}
+
+.card-description {
+  font-size: 0.7rem;       
+  word-break: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+  line-height: 1.5;
+  max-height: 80px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+.read-button {
+  margin: 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1.2rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #3b82f6; /* 蓝色基调 (Tailwind 的 blue-500) */
+  border: none;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.read-button:hover {
+  background-color: #2563eb; /* hover: 深一点的蓝色 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+  transform: translateY(-1px);
+}
+
+
+

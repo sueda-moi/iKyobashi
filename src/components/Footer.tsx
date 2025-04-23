@@ -36,13 +36,22 @@ const Footer: React.FC<FooterProps> = ({ floating = false }) => {
         <div>
           <p>東京都知事（1）第108005号</p>
           <p>京喬不動産株式会社 KEIKYO REAL ESTATE CO.,LTD.</p>
-          <p>T 03-6228-3286　F 03-6736-0422　M 080-5659-1464</p>
-          <p>E-MAIL WUJUNRONG@MARSCAPITALJP.COM</p>
-        </div>
-        <div style={{ textAlign: 'right' }}>
           <p>〒100-0005 東京都千代田区丸の内3丁目4-2 新日石ビルヂング7階713</p>
           <p>〒103-0002 東京都中央区日本橋馬喰町1丁目12-7 シティハイツ日本橋202</p>
           <p>&copy; KEIKYO REAL ESTATE CO.,LTD. ALL RIGHTS RESERVED</p>
+
+        </div>
+        <div style={{ textAlign: 'right' }}>
+          <p>
+            電話（Tel）：03-6228-3286
+          </p>
+          <p>
+            ファクス（Fax)： 03-6736-0422
+          </p>
+          <p>
+            携帯（Mobile)： 080-5659-1464
+          </p>
+          <p>E-MAIL WUJUNRONG@MARSCAPITALJP.COM</p>
         </div>
       </div>
     </footer>

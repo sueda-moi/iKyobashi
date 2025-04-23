@@ -40,7 +40,7 @@ const Pg002: React.FC = () => {
   return (
     <div className="container">
       {/* 🔖 事業概要（サマリー） */}
-      <div className="summary-container">
+      <div className="summary-container relative w-full h-[300px] mb-8">
         <Image src="/image/sakura.jpg" 
                alt="サマリー画像" 
                fill
@@ -51,6 +51,7 @@ const Pg002: React.FC = () => {
             <p>私たちは不動産業界での豊富な経験と専門知識を持っており、お客様のニーズに合わせた最適な不動産ソリューションを提供します。私たちの目標は、お客様の期待を超える価値を提供し、彼らの人生やビジネスの成功に貢献することです。</p>
             <p>私たちの情熱と専門知識で、東京の不動産市場でのお手伝いをいたします。私たちと一緒に未来を輝かせましょう。</p>
         </div>
+
 
         {/* 🧭 セクションナビカード */}
         <div className="card-container">

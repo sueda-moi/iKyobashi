@@ -3,7 +3,7 @@
 import Lottie from "lottie-react";
 import React from "react";
 import './ScrollLottie.css';
-import scrollDownAnimation from './lottie/scroll-down.json'; 
+import scrollDownAnimation from './lottie/scroll-down-bright.json'; 
 
 type ScrollLottieProps = {
   onClick?: () => void;

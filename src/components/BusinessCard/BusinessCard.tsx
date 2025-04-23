@@ -2,6 +2,7 @@
 import React from 'react';
 import Image from 'next/image';
 import './BusinessCard.css';
+import Link from 'next/link';
 
 interface BusinessCardProps {
   title: string;
@@ -24,7 +25,7 @@ const BusinessCard: React.FC<BusinessCardProps> = ({ title, description, iconSrc
       </div>
       <h3 className="card-title">{title}</h3>
       <p className="card-description">{description}</p>
-      <a href={href} className="read-button">READ</a>
+      <Link href={href} className="read-button">READ</Link>
     </div>
   );
 };

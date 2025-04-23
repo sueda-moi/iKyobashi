@@ -1,14 +1,42 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './Pg004.css'; // 必要なら Tailwind に移行可
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
+
+// ⚙️ LottieアニメーションをSSR無効で読み込み（クライアント専用）
+const ScrollLottie = dynamic(() => import('@/components/ScrollLottie/ScrollLottie'), { ssr: false });
 
 const Pg004: React.FC = () => {
+
+    const [isAtBottom, setIsAtBottom] = useState(false);
+    const sectionTeamRef = useRef<HTMLDivElement>(null);
+  
+    // 📜 スクロール位置によってページ下部かどうかを判定
+    useEffect(() => {
+      const handleScroll = () => {
+        const scrollTop = window.scrollY;
+        const windowHeight = window.innerHeight;
+        const fullHeight = document.documentElement.scrollHeight;
+  
+        // 「ページ最下部」に到達していれば true
+        setIsAtBottom(scrollTop + windowHeight >= fullHeight - 20);
+      };
+  
+      window.addEventListener('scroll', handleScroll);
+      return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+  
+    // 🔍 指定したセクションにスムーズスクロール
+    const scrollToSection = (ref: React.RefObject<HTMLDivElement | null>) => {
+      ref.current?.scrollIntoView({ behavior: 'smooth' });
+    };
+
   return (
     <main className="px-4 py-8 space-y-16">
       <div className="container">
-        <div className="summary-container">
+      <div className="summary-container relative w-full h-[300px] mb-8">
           <Image src="/image/conversation.jpg"
             alt="サマリー画像"
             fill
@@ -16,13 +44,20 @@ const Pg004: React.FC = () => {
         </div>
       </div>
 
+      {/* 👇 まだ最下部でなければ、スクロール誘導アニメーションを表示 */}
+      {!isAtBottom && (
+        <div className="scroll-lottie-wrapper">
+          <ScrollLottie onClick={() => scrollToSection(sectionTeamRef)} />
+        </div>
+      )}
+
       <div className='childContent'>
         {/* 会社住所 + 地図 */}
         <section id="access" className="max-w-5xl mx-auto">
           <h2 className="text-2xl font-semibold mb-6">会社アクセス</h2>
 
           {/* 丸の内オフィス */}
-          <div className="mb-12">
+          <div className="mb-12" ref={sectionTeamRef}>
             <h3 className="text-xl font-semibold mb-2">丸の内オフィス</h3>
             <p className="mb-2">〒100-0005 東京都千代田区丸の内3丁目4-2 新日石ビルヂング7階713</p>
             <div className="w-full h-64 border">
