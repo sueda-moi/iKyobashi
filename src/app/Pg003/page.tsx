@@ -1,11 +1,38 @@
 'use client';
 
 import './Pg003.css';
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import BusinessCarousel from '@/components/BusinessCard/BusinessCarousel';
 
+import dynamic from 'next/dynamic';
+
+// ⚙️ LottieアニメーションをSSR無効で読み込み（クライアント専用）
+const ScrollLottie = dynamic(() => import('@/components/ScrollLottie/ScrollLottie'), { ssr: false });
+
 const Pg003: React.FC = () => {
+      const [isAtBottom, setIsAtBottom] = useState(false);
+      const sectionTeamRef = useRef<HTMLDivElement>(null);
+    
+      // 📜 スクロール位置によってページ下部かどうかを判定
+      useEffect(() => {
+        const handleScroll = () => {
+          const scrollTop = window.scrollY;
+          const windowHeight = window.innerHeight;
+          const fullHeight = document.documentElement.scrollHeight;
+    
+          // 「ページ最下部」に到達していれば true
+          setIsAtBottom(scrollTop + windowHeight >= fullHeight - 20);
+        };
+    
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+      }, []);
+    
+      // 🔍 指定したセクションにスムーズスクロール
+      const scrollToSection = (ref: React.RefObject<HTMLDivElement | null>) => {
+        ref.current?.scrollIntoView({ behavior: 'smooth' });
+      };
   return (
     <div className="container">
       {/* サマリー画像セクション */}
@@ -17,6 +44,13 @@ const Pg003: React.FC = () => {
           className="summary-img object-cover"
         />
       </div>
+
+      {/* 👇 まだ最下部でなければ、スクロール誘導アニメーションを表示 */}
+      {!isAtBottom && (
+        <div className="scroll-lottie-wrapper">
+          <ScrollLottie onClick={() => scrollToSection(sectionTeamRef)} />
+        </div>
+      )}
 
       <div className='childContent'>
         {/* 事業概要セクション */}

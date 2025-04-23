@@ -64,7 +64,12 @@ header.scrolled {
   background-color: transparent; /* 背景は透明に */
   color: white; /* 文字色は白に */
   z-index: 150; /* 重なり順を指定（ヘッダーなどと干渉しないように） */
-  padding: 20px 20px 40px; /* 上・左右に20px、下に40pxの余白を設定 */
+  padding-top: 10px; 
+  padding-left: 20px; 
+  padding-right: 20px; 
+  padding-bottom: 0px;
+  
+  /* 上・左右に20px、下に40pxの余白を設定 */
   transition: background-color 0.3s ease; /* 背景色の変化にアニメーション効果をつける */
 }
 
