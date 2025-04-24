@@ -51,7 +51,7 @@ const Footer: React.FC<FooterProps> = ({ floating = false }) => {
           <p>
             携帯（Mobile)： 080-5659-1464
           </p>
-          <p>E-MAIL WUJUNRONG@MARSCAPITALJP.COM</p>
+          <p>メール（E-MAIL）： WUJUNRONG@MARSCAPITALJP.COM</p>
         </div>
       </div>
     </footer>
