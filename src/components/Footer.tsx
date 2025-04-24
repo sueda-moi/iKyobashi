@@ -42,16 +42,10 @@ const Footer: React.FC<FooterProps> = ({ floating = false }) => {
 
         </div>
         <div style={{ textAlign: 'right' }}>
-          <p>
-            電話（Tel）：03-6228-3286
-          </p>
-          <p>
-            ファクス（Fax)： 03-6736-0422
-          </p>
-          <p>
-            携帯（Mobile)： 080-5659-1464
-          </p>
-          <p>メール（E-MAIL）： WUJUNRONG@MARSCAPITALJP.COM</p>
+          <p>電話（Tel）：03-6228-3286</p>
+          <p>ファクス（Fax)： 03-6736-0422</p>
+          <p>携帯（Mobile)： xxx-xxxx-xxxx</p>
+          <p>メール（E-MAIL）： xxxxxx@MARSCAPITALJP.COM</p>
         </div>
       </div>
     </footer>

@@ -41,7 +41,7 @@ const Pg002: React.FC = () => {
     <div className="container">
       {/* 🔖 事業概要（サマリー） */}
       <div className="summary-container relative w-full h-[300px] mb-8">
-        <Image src="/image/sakura.jpg" 
+        <Image src="/image/pg002-top.jpg" 
                alt="サマリー画像" 
                fill
                className="summary-img" />
