@@ -6,6 +6,9 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: '京喬不動産株式会社',
   description: '自由に、未来に、輝く',
+  icons: {
+    icon: '/favicon.ico',
+  },
 };
 
 // App Router における共通レイアウト（クライアントレイアウトに処理を委譲）
