@@ -36,11 +36,11 @@ const Pg004: React.FC = () => {
   return (
     <main className="px-4 py-8 space-y-16">
       <div className="container">
-      <div className="summary-container relative w-full h-[300px] mb-8">
+      <div className="flex w-full pb-[60px] relative h-[800px] mb-8">
           <Image src="/image/conversation.jpg"
             alt="サマリー画像"
             fill
-            className="summary-img" />
+            className="w-full block object-cover z-[100]" />
         </div>
       </div>
 

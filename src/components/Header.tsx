@@ -33,7 +33,7 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen, toggleMenu }) => {
     <header className={`${scrolled ? 'scrolled' : ''}`}>
 
       {/* Logo */}
-      <div className="flex-shrink-0">
+      <div className="flex-shrink-0 pt-[20px] pl-[20px]">
         <Image src="/image/headerImg.png" alt="Logo" width={75} height={75} />
       </div>
 

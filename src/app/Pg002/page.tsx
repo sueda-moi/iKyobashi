@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import ExpandableTab from '@/components/ExpandableTab/ExpandableTab';
 import dynamic from 'next/dynamic';
+// import InfoCardButton from '@/components/InfoCardButton/InfoCardButton';
 
 // ⚙️ LottieアニメーションをSSR無効で読み込み（クライアント専用）
 const ScrollLottie = dynamic(() => import('@/components/ScrollLottie/ScrollLottie'), { ssr: false });
@@ -40,11 +41,11 @@ const Pg002: React.FC = () => {
   return (
     <div className="container">
       {/* 🔖 事業概要（サマリー） */}
-      <div className="summary-container relative w-full h-[300px] mb-8">
-        <Image src="/image/pg002-top.jpg" 
+      <div className="flex w-full pb-[60px] relative h-[800px] mb-8">
+        <Image src="/image/sakura.jpg" 
                alt="サマリー画像" 
                fill
-               className="summary-img" />
+               className="w-full block object-cover z-[100]" />
         <div className="summaryText-container">
           <h1>トップメッセージ</h1>
             <p>私たちの企業の根幹には、自由、未来、そして輝くという価値観があります。私たちはクライアントの自由な選択を尊重し、彼らの未来をサポートすることを使命としています。また、私たちは常に快活な気風のもとで働き、率直な提言を行い、新しい発想を生み出すことに取り組んでいます。私たちのチームは創造力に満ち、柔軟な解決策を提供することで、お客様のニーズに応えます。</p>
@@ -53,8 +54,8 @@ const Pg002: React.FC = () => {
         </div>
 
 
-        {/* 🧭 セクションナビカード */}
-        <div className="card-container">
+        {/* 🧭 セクションナビカード - PC版 */}  
+        <div className="absolute top-[14%] right-[5%] z-[102] flex flex-row gap-[20px] ">
           <div className="info-card" onClick={() => scrollToSection(sectionTeamRef)}>
             <h3>チーム紹介</h3>
           </div>
@@ -65,6 +66,13 @@ const Pg002: React.FC = () => {
             <h3>企業写真</h3>
           </div>
         </div>
+        {/* 🧭 セクションナビカード - モバイル版 */}  
+        {/* <div className="md:hidden fixed top-[40%] right-0 z-30">
+          <InfoCardButton />
+        </div> */}
+
+
+
       </div>
 
       {/* 👇 まだ最下部でなければ、スクロール誘導アニメーションを表示 */}

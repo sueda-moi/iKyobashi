@@ -244,20 +244,9 @@ header.scrolled {
   display: flex;
   flex-direction: column;
 }
-.summary-container {
-  display: flex;
-  width: 100%;
-  height: 800px;
-  padding-bottom: 60px;
-}
 
-.summary-img {
-  width: 100%;
-  height: 800px;
-  object-fit: cover;
-  display: block; 
-  z-index: 100;
-}
+
+
   
 .scroll-lottie-wrapper {
   position: fixed;

@@ -36,12 +36,12 @@ const Pg003: React.FC = () => {
   return (
     <div className="container">
       {/* サマリー画像セクション */}
-      <div className="summary-container relative w-full h-[300px] mb-8">
+      <div className="flex w-full pb-[60px] relative h-[800px] mb-8">
         <Image
           src="/image/office.jpg"
           alt="サマリー画像"
           fill
-          className="summary-img object-cover"
+          className="w-full block object-cover z-[100]"
         />
       </div>
 
