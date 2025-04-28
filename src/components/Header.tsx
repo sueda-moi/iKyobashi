@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { FiAlignJustify } from 'react-icons/fi';
+import { FiAlignJustify, FiX } from 'react-icons/fi'; 
 
 interface HeaderProps {
   isMenuOpen: boolean;
@@ -46,11 +46,17 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen, toggleMenu }) => {
 
       {/* Navigation */}
       <nav className={`navbar ${isMenuOpen ? 'open' : ''}`}>
+        {/* colose button，only show when nav open */}
+        {isMenuOpen && (
+          <div className="close-icon" onClick={toggleMenu}>
+            <FiX size={30} color="white" />
+          </div>
+        )}
         <ul className="nav-list">
         {navItems.map((item) => {
             const isActive = pathname === item.path;
             return (
-              <li key={item.path}>
+              <div key={item.path}>
                 {isActive ? (
                   <span className="nav-link active">{item.label}</span>
                 ) : (
@@ -60,7 +66,7 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen, toggleMenu }) => {
                     {item.label}
                   </Link>
                 )}
-              </li>
+              </div>
             );
           })}
         </ul>

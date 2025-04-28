@@ -7,6 +7,12 @@ const config: Config = {
   ],
   theme: {
     extend: {},
+    screens: {
+      sm: '640px',  //  >= 640px
+      md: '768px',  //  >= 768px
+      lg: '1024px', //  >= 1024px
+      xl: '1280px', //  >= 1280px
+    },
   },
   plugins: [],
 };

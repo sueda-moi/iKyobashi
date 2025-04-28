@@ -80,12 +80,23 @@ header.scrolled {
     width: 100%;
   }
 
+  /* Media query for smaller screens */
+@media (max-width: 768px) {
+  .App-footer-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 0.4rem; 
+    line-height: 0.5rem; 
+  }
+}
+
   .App-footer.floating {
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
-    z-index: 999;
+    z-index: 150;
   }
 
   .App-footer.scrolled {
@@ -167,7 +178,7 @@ header.scrolled {
   margin-left: auto; 
 }
 
-.navbar li {
+.navbar div {
   margin: 0 10px;
 }
 
@@ -198,36 +209,68 @@ header.scrolled {
 }
 
 /* Media query for smaller screens */
+/* スマホ画面（768px以下）のためのメディアクエリ */
 @media (max-width: 768px) {
+  /* ナビゲーションメニューの初期設定（非表示） */
   .navbar {
-    display: none;
-    position: absolute;
-    top: 50px;
+    display: none; /* 初期状態ではメニューを非表示 */
+    position: fixed; /* メニューを画面に固定 */
+    top: 0;
     left: 0;
     right: 0;
-    background-color: transparent;
-    flex-direction: column;
-    align-items: center;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.699); /* 半透明の黒背景 */
+    flex-direction: column; /* メニュー項目を縦に並べる */
+    align-items: center; /* 中央揃え */
+    justify-content: center; /* 垂直方向にも中央揃え */
+    z-index: 9000; /* メニューを最前面に表示 */
+    overflow-y: auto; /* メニューが多い場合にスクロール可能 */
   }
 
+  /* メニューが開いている時 */
   .navbar.open {
-    display: flex;
+    display: flex; /* メニューを表示 */
   }
 
+  /* メニューのリスト */
+  .navbar ul {
+    list-style: none; /* リストのドットを削除 */
+    padding: 0;
+    margin: 0;
+    display: flex; /* リスト項目を横並びにしない */
+    flex-direction: column; /* 縦に並べる */
+    gap: 20px; /* メニュー項目の間隔を20pxに設定 */
+  }
+
+  /* メニュー項目のスタイル */
+  .navbar div {
+    font-size: 1.5rem; /* フォントサイズを大きめに設定 */
+    text-align: center; /* テキストを中央揃え */
+  }
+
+  /* メニューアイコン（ハンバーガーアイコン）の設定 */
   .menu-icon {
-    display: block;
+    display: block; /* メニューアイコンを表示 */
+    cursor: pointer; /* アイコンがクリック可能に */
   }
 
+  /* メニューアイコンが開いている時のアニメーション */
   .menu-icon.open .bar:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
+    transform: rotate(45deg) translate(5px, 5px); /* 上のバーを斜めに回転 */
   }
   .menu-icon.open .bar:nth-child(2) {
-    opacity: 0;
+    opacity: 0; /* 中央のバーを消す */
   }
   .menu-icon.open .bar:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
+    transform: rotate(-45deg) translate(5px, -5px); /* 下のバーを斜めに回転 */
   }
 }
+
+/* Hide the footer when the menu is open */
+.navbar.open + .App-footer {
+  display: none; 
+}
+
 
 .learnMore-bt {
   background-color: transparent;
