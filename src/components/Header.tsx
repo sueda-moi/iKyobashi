@@ -14,12 +14,24 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ isMenuOpen, toggleMenu }) => {
   const [scrolled, setScrolled] = useState(false);
+  const [isMobile, setIsMobile] = useState(false); //screen width detection 
+
   const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // 👇 2. screen width detection 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    handleResize(); // init first time set up
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   const navItems = [
@@ -47,8 +59,9 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen, toggleMenu }) => {
       {/* Navigation */}
       <nav className={`navbar ${isMenuOpen ? 'open' : ''}`}>
         {/* colose button，only show when nav open */}
-        {isMenuOpen && (
-          <div className="close-icon" onClick={toggleMenu}>
+        {isMenuOpen && isMobile && (
+          <div className="close-icon" 
+	       onClick={toggleMenu}>
             <FiX size={30} color="white" />
           </div>
         )}

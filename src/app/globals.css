@@ -55,6 +55,13 @@ header.scrolled {
   padding: 60px 120px 120px 120px; 
 }
 
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .childContent{
+    padding: 10px 12px 12px 12px; 
+  }
+}
+
 .App-footer {
   position: relative; /* 相対位置指定（他の要素との重なりを制御） */
   font-size: 0.8rem;  /* フッターの文字サイズを小さめに設定 */
