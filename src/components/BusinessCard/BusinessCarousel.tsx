@@ -2,6 +2,7 @@
 
 // import React, { useEffect, useRef, useState } from 'react';
 import BusinessCard from './BusinessCard';
+import './BusinessCard.css';
 import {
     RealEstateIcon001,
     RealEstateIcon002,
@@ -98,7 +99,7 @@ const cardData: CardData[] = [
 const BusinessCarousel: React.FC = () => {
   return (
     <div className="px-4 py-8">
-      <div className="grid grid-cols-3 gap-6 max-w-6xl mx-auto">
+      <div className="business-grid">
         {/* {cardData.map((card, index) => (
           <div key={index}>
             <BusinessCard {...card} />

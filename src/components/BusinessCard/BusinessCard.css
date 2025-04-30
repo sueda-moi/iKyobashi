@@ -72,4 +72,29 @@
 }
 
 
+/* BusinessCarousel.css */
+.business-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Default: 3 columns */
+  gap: 1.5rem; /* Space between grid items */
+  max-width: 72rem; /* Same as max-w-6xl */
+  margin-left: auto; /* Center alignment */
+  margin-right: auto; /* Center alignment */
+}
+
+/* When the screen width is 768px or smaller, use 2 columns */
+@media (max-width: 768px) {
+  .business-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
+  }
+}
+
+/* When the screen width is 640px or smaller, use 1 column */
+@media (max-width: 640px) {
+  .business-grid {
+    grid-template-columns: 1fr; /* 1 column on mobile screens */
+  }
+}
+
+
 
