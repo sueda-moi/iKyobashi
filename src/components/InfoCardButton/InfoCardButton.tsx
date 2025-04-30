@@ -1,45 +1,82 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import styles from './InfoCardButton.module.css';
 
-const InfoCardButton = () => {
-  // 便箋が展開されているかどうかを制御する
+type InfoCardButtonProps = {
+  onClickTeam: () => void;
+  onClickCompany: () => void;
+  onClickPhotos: () => void;
+};
+
+const InfoCardButton: React.FC<InfoCardButtonProps> = ({
+  onClickTeam,
+  onClickCompany,
+  onClickPhotos,
+}) => {
+  const [isMobile, setIsMobile] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
-  // 便箋の表示を切り替える
-  const toggleInfoCards = () => {
-    setIsOpen(!isOpen);
-  };
+  // 📱 Detect if screen size is mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => {
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('resize', checkMobile);
+      }
+    };
+  }, []);
+
+  if (!isMobile) return null; // Render only on mobile devices
 
   return (
     <>
-      {/* 便箋痕跡ボタン - モバイル版 */}
-      <div
-        className={`md:hidden fixed top-[40%] right-0 z-30 ${isOpen ? 'hidden' : 'block'}`}
-        onClick={toggleInfoCards}
-      >
-        {/* 便箋痕跡ボタン */}
-        <div className="w-[30px] h-[30px] bg-yellow-300 rounded-lg shadow-lg cursor-pointer">
-          {/* ここに便箋のアイコンを使用することができます */}
+      {/* 📝 Sticky tab button */}
+      {/* {!isOpen && (
+        <div className={styles.floatingButton} onClick={() => setIsOpen(true)} />
+      )} */}
+      {!isOpen && (
+        <div className={styles.stickyButtonWrapper} onClick={() => setIsOpen(true)}>
+          <div className={styles.stickyButtonSquare} />
+          <div className={styles.stickyButtonLabelVertical}>サービス一覧</div>
         </div>
-      </div>
+      )}
 
-      {/* 便箋浮層 - モバイル版 */}
-      <div
-        className={`md:hidden fixed top-[40%] right-0 z-40 ${isOpen ? 'block' : 'hidden'} bg-white shadow-lg p-4 rounded-md`}
-        onClick={toggleInfoCards}
-      >
-        {/* ここは展開後の3つの便箋 */}
-        <div className="flex flex-col gap-4">
-          <div className="bg-yellow-200 p-4 rounded-md shadow-md">
-            <h3 className="font-bold">チーム紹介</h3>
+      {/* 📂 Expandable card list */}
+      {isOpen && (
+        <div className={styles.cardMenu}>
+          <div
+            className={styles.cardItem}
+            onClick={() => {
+              onClickTeam();
+              setIsOpen(false);
+            }}
+          >
+            <h3>チーム紹介</h3>
           </div>
-          <div className="bg-yellow-200 p-4 rounded-md shadow-md">
-            <h3 className="font-bold">会社概要</h3>
+          <div
+            className={styles.cardItem}
+            onClick={() => {
+              onClickCompany();
+              setIsOpen(false);
+            }}
+          >
+            <h3>会社概要</h3>
           </div>
-          <div className="bg-yellow-200 p-4 rounded-md shadow-md">
-            <h3 className="font-bold">企業写真</h3>
+          <div
+            className={styles.cardItem}
+            onClick={() => {
+              onClickPhotos();
+              setIsOpen(false);
+            }}
+          >
+            <h3>企業写真</h3>
           </div>
         </div>
-      </div>
+      )}
     </>
   );
 };

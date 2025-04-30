@@ -20,17 +20,20 @@
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
   }
   
-  /*for smartphone*/
-  @media (max-width: 768px) {
-    .summaryText-container {
-      position: absolute;
-      top: 50%;
-      left: 50%; 
-      transform: translate(-50%, -50%);
-      width: 90%; 
-      font-size: 1rem; 
-    }
+/* スマートフォン向けレスポンシブ調整 */
+@media (max-width: 768px) {
+  .summaryText-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 85%; /* 少し右側に余白を残す（浮動ボタン用） */
+    font-size: 0.9rem; /* 少し小さめに調整 */
+    padding: 16px; /* パディングも軽く調整 */
+    border-radius: 10px;
+    justify-content: center;
   }
+}
 
   .info-card {
     background-color: transparent;
@@ -130,3 +133,5 @@
     line-height: 1.6;
     color: #444;
   }
+
+
