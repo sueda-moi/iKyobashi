@@ -18,7 +18,7 @@
   background-color: #fff;
   padding: 16px;
   border-radius: 8px;
-  z-index: 110;
+  z-index: 160;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
@@ -40,7 +40,7 @@
   position: absolute;
   top: 16%;
   right: 4%;
-  z-index: 105;
+  z-index: 160;
 }
 
 .stickyButtonWrapper {
@@ -54,13 +54,13 @@
   cursor: pointer;
 }
 
-.stickyButtonSquare {
+/* .stickyButtonSquare {
   width: 30px;
   height: 30px;
   background-color: #9ef793bd;
   border-radius: 6px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-}
+} */
 
 .stickyButtonLabelVertical {
   writing-mode: vertical-rl;

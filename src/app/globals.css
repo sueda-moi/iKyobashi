@@ -87,16 +87,13 @@ header.scrolled {
     width: 100%;
   }
 
-  /* Media query for smaller screens */
-@media (max-width: 768px) {
-  .App-footer-content {
+  .App-footer-content-smartphone {
     display: flex;
-    justify-content: space-between;
+    float: left;
     width: 100%;
-    font-size: 0.4rem; 
+    font-size: 0.7rem;
     line-height: 0.5rem; 
   }
-}
 
   .App-footer.floating {
     position: fixed;
@@ -107,7 +104,7 @@ header.scrolled {
   }
 
   .App-footer.scrolled {
-    background-color: rgba(0, 0, 0, 0.8); 
+    background-color: rgba(32, 32, 32, 0.678); 
   }
 
   .layout-root {

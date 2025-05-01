@@ -16,7 +16,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
   const isHomeScreenPage = pathname === '/Pg001';
 
   // ページ遷移時のローディング表示時間（ミリ秒）
-  const LOADING_DURATION = 800;
+  const LOADING_DURATION = 400;
 
   // カスタムフック：ページ遷移の状態を取得（ローディング制御）
   const { loading } = usePageTransition(LOADING_DURATION);

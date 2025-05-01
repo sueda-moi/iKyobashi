@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import styles from './InfoCardButton.module.css';
 
 type InfoCardButtonProps = {
@@ -14,8 +14,9 @@ const InfoCardButton: React.FC<InfoCardButtonProps> = ({
 }) => {
   const [isMobile, setIsMobile] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null); // Ref for the whole component
 
-  // 📱 Detect if screen size is mobile
+  // 📱 Detect mobile screen
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
@@ -29,18 +30,34 @@ const InfoCardButton: React.FC<InfoCardButtonProps> = ({
       }
     };
   }, []);
+  // 🖱 Close when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        isOpen &&
+        containerRef.current &&
+        !containerRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    };
 
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
   if (!isMobile) return null; // Render only on mobile devices
 
   return (
-    <>
+    <div ref={containerRef}>
       {/* 📝 Sticky tab button */}
       {/* {!isOpen && (
         <div className={styles.floatingButton} onClick={() => setIsOpen(true)} />
       )} */}
       {!isOpen && (
         <div className={styles.stickyButtonWrapper} onClick={() => setIsOpen(true)}>
-          <div className={styles.stickyButtonSquare} />
+          {/* <div className={styles.stickyButtonSquare} /> */}
           <div className={styles.stickyButtonLabelVertical}>サービス一覧</div>
         </div>
       )}
@@ -77,7 +94,7 @@ const InfoCardButton: React.FC<InfoCardButtonProps> = ({
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 };
 
