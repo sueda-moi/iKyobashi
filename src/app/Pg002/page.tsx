@@ -109,7 +109,7 @@ const Pg002: React.FC = () => {
       <div className="detail-container">
         {/* 🧑‍🤝‍🧑 チーム紹介 */}
         <div className="section-detail section-card" ref={sectionTeamRef}>
-          <p>
+          <p className='pl-[5px]'>
             <span className="card-title">チーム紹介</span>
             <span className="card-subtitle">TEAM INTRODUCTION</span>
           </p>
@@ -125,7 +125,7 @@ const Pg002: React.FC = () => {
 
         {/* 🏢 会社概要 */}
         <div className="section-detail section-card" ref={sectionCompanyRef}>
-          <p>
+          <p className='pl-[5px]'>
             <span className="card-title">会社概要</span>
             <span className="card-subtitle">COMPANY OVERVIEW</span>
           </p>
@@ -141,7 +141,7 @@ const Pg002: React.FC = () => {
 
         {/* 🖼️ 企業写真 */}
         <div className="section-detail section-card" ref={sectionPhotosRef}>
-          <p>
+          <p className='pl-[5px]'>
             <span className="card-title">企業写真</span>
             <span className="card-subtitle">CORPORATE PHOTOS</span>
           </p>

@@ -24,11 +24,11 @@
 @media (max-width: 768px) {
   .summaryText-container {
     position: absolute;
-    top: 50%;
+    top: 35%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 85%; /* 少し右側に余白を残す（浮動ボタン用） */
-    font-size: 0.9rem; /* 少し小さめに調整 */
+    font-size: 0.6rem; /* 少し小さめに調整 */
     padding: 16px; /* パディングも軽く調整 */
     border-radius: 10px;
     justify-content: center;
@@ -85,12 +85,12 @@
   }
 
   .section-card {
-    background-image: url('/image/pg002-card.jpg');
+    /* background-image: url('/image/pg002-card.jpg'); */
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     background-blend-mode: overlay; 
-    background-color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(214, 193, 193, 0.849);
     backdrop-filter: blur(10px);
   }
   

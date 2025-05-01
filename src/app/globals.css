@@ -89,10 +89,10 @@ header.scrolled {
 
   .App-footer-content-smartphone {
     display: flex;
-    float: left;
     width: 100%;
-    font-size: 0.7rem;
-    line-height: 0.5rem; 
+    flex-direction: column;
+    white-space: nowrap; 
+    font-size: clamp(0.1rem, 2.5vw, 0.7rem);
   }
 
   .App-footer.floating {
