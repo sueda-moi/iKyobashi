@@ -4,6 +4,8 @@ import React, { useEffect, useState } from 'react';
 import clsx from 'clsx';
 //import Image from 'next/image';
 import { usePathname } from 'next/navigation'; // 現在のパスを取得するためのフック
+//import { useTranslation } from 'react-i18next';
+
 
 interface FooterProps {
   floating?: boolean;
@@ -13,6 +15,8 @@ const Footer: React.FC<FooterProps> = ({ floating = false }) => {
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname(); // 現在のページのパスを取得
   const isPg001 = pathname === '/Pg001'; // パスが /Pg001 かどうかを判定
+
+  //const { t } = useTranslation('common');
 
   // スクロールイベントを監視し、スクロール位置が50pxを超えたら状態を更新
   useEffect(() => {
