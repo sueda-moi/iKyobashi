@@ -68,14 +68,10 @@
     display: flex;
     flex-direction: column;
     gap: 64px; 
-    padding-bottom: 80px;
     margin-top: 80px;
   }
 
   .section-detail {
-    margin: 0 auto; 
-    width: 80%;
-    max-width: 1000px;
     background-color: rgba(255, 250, 250, 0.8); 
     border-radius: 16px; 
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1); 
@@ -83,16 +79,5 @@
     border: 1px solid rgba(255, 255, 255, 0.4); 
     transition: all 0.3s ease-in-out;
   }
-
-  .section-card {
-    /* background-image: url('/image/pg002-card.jpg'); */
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-blend-mode: overlay; 
-    background-color: transparent;
-    backdrop-filter: blur(10px);
-  }
-
   
 

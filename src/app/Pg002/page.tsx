@@ -106,9 +106,9 @@ const Pg002: React.FC = () => {
       )}
 
       {/* 🧩 詳細セクション */}
-      <div className="detail-container">
+      <div className="flex flex-col gap-[30px] childContent">
         {/* 🧑‍🤝‍🧑 チーム紹介 */}
-        <div className="section-detail section-card" ref={sectionTeamRef}>
+        <div className="section-detail" ref={sectionTeamRef}>
           <ExpandableTab title="チーム紹介" subtitle="TEAM INTRODUCTION">
             <p>不動産売買、賃貸仲介、資産運用アドバイスなど多岐に渡るサービスを提供しています。</p>
             <ul>
@@ -120,7 +120,7 @@ const Pg002: React.FC = () => {
         </div>
 
         {/* 🏢 会社概要 */}
-        <div className="section-detail section-card" ref={sectionCompanyRef}>
+        <div className="section-detail" ref={sectionCompanyRef}>
           <ExpandableTab title="会社概要" subtitle="COMPANY OVERVIEW">
             <p>不動産売買、賃貸仲介、資産運用アドバイスなど多岐に渡るサービスを提供しています。</p>
             <ul>
@@ -132,7 +132,7 @@ const Pg002: React.FC = () => {
         </div>
 
         {/* 🖼️ 企業写真 */}
-        <div className="section-detail section-card" ref={sectionPhotosRef}>
+        <div className="section-detail" ref={sectionPhotosRef}>
           <ExpandableTab title="企業写真" subtitle="CORPORATE PHOTOS">
             <p>不動産売買、賃貸仲介、資産運用アドバイスなど多岐に渡るサービスを提供しています。</p>
             <ul>

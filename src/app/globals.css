@@ -30,8 +30,6 @@ header {
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-
-
 header.scrolled {
   background-color: rgba(92, 85, 85, 0.8);  
   box-shadow: 0 2px 10px rgba(0,0,0,0.3);
@@ -97,28 +95,10 @@ header.scrolled {
   background-color: transparent; /* 背景は透明に */
   color: white; /* 文字色は白に */
   z-index: 150; /* 重なり順を指定（ヘッダーなどと干渉しないように） */
-  padding-top: 10px; 
-  padding-left: 20px; 
-  padding-right: 20px; 
-  padding-bottom: 0px;
   
   /* 上・左右に20px、下に40pxの余白を設定 */
   transition: background-color 0.3s ease; /* 背景色の変化にアニメーション効果をつける */
 }
-
-
-  .App-footer-content {
-    width: 100%;
-  }
-
-  .App-footer-content-smartphone {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    white-space: nowrap; 
-    font-size: clamp(0.1rem, 2.5vw, 0.7rem);
-    line-height: 0.5;
-  }
 
   .App-footer.floating {
     position: fixed;
@@ -130,6 +110,28 @@ header.scrolled {
 
   .App-footer.scrolled {
     background-color: rgba(32, 32, 32, 0.678); 
+  }
+  .appFooterContractBG{
+    background-color: #adaaaa;
+    padding-top: 10px; 
+    padding-left: 20px; 
+    padding-right: 20px; 
+    padding-bottom: 0px;
+    transition: background-color 0.3s ease-in-out;
+  }
+  .App-footer-content-smartphone {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    white-space: nowrap; 
+    font-size: clamp(0.1rem, 2.5vw, 0.7rem);
+    line-height: 0.5;
+  }
+  .appFooterContractBG-smartphone{
+    background-color: #adaaaa;
+    padding-left: 5px; 
+    padding-right: 5px;
+    transition: background-color 0.3s ease-in-out;
   }
 
   .layout-root {
