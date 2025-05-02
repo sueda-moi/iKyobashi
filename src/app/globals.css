@@ -30,11 +30,7 @@ header {
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-header img {
-  width: auto; 
-  height: 100%; 
-  object-fit: contain;
-}
+
 
 header.scrolled {
   background-color: rgba(92, 85, 85, 0.8);  
@@ -50,6 +46,36 @@ header.scrolled {
 .layout-root main {
   flex: 1; 
 }
+
+
+/* デフォルトのスタイル - デスクトップや大きなスクリーン向け */
+.logo-container {
+  display: flex;
+  justify-content: flex-start; /* ロゴを左に配置 */
+  align-items: center; /* ロゴを垂直方向に中央揃え */
+  padding-top: 20px; /* 上部の余白 */
+  padding-left: 20px; /* 左側の余白 */
+}
+
+.logo-container img {
+  width: auto; 
+  height: 100%; 
+  object-fit: contain;
+}
+
+/* モバイル端末向けにサイズを調整するスタイル */
+@media (max-width: 768px) {
+  .logo-container {
+    padding-top: 2px; /* モバイル端末では上部の余白を少し減らす */
+    padding-left: 15px; /* モバイル端末では左側の余白を少し減らす */
+  }
+
+  .logo-container img {
+    width: 50px;  /* モバイル端末の画像の幅を小さく設定 */
+    height: 50px; /* モバイル端末の画像の高さを小さく設定 */
+  }
+}
+
 
 .childContent{
   padding: 60px 120px 120px 120px; 
@@ -82,8 +108,6 @@ header.scrolled {
 
 
   .App-footer-content {
-    display: flex;
-    justify-content: space-between;
     width: 100%;
   }
 
@@ -93,6 +117,7 @@ header.scrolled {
     flex-direction: column;
     white-space: nowrap; 
     font-size: clamp(0.1rem, 2.5vw, 0.7rem);
+    line-height: 0.5;
   }
 
   .App-footer.floating {

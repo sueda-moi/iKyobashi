@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import clsx from 'clsx';
-import Image from 'next/image';
+//import Image from 'next/image';
 import { usePathname } from 'next/navigation'; // 現在のパスを取得するためのフック
 
 interface FooterProps {
@@ -12,7 +12,7 @@ interface FooterProps {
 const Footer: React.FC<FooterProps> = ({ floating = false }) => {
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname(); // 現在のページのパスを取得
-  const isPg001 = pathname === '/Pg001'; // パスが /Pg001 かどうかを判定
+  //const isPg001 = pathname === '/Pg001'; // パスが /Pg001 かどうかを判定
 
   // スクロールイベントを監視し、スクロール位置が50pxを超えたら状態を更新
   useEffect(() => {
@@ -40,28 +40,36 @@ const Footer: React.FC<FooterProps> = ({ floating = false }) => {
       scrolled, // スクロールに応じてクラス切り替え
     })}>
       {/* ロゴ画像：Pg001 ページでは非表示 */}
-      {!isPg001 && !isMobile && (
+      {/* {!isPg001 && !isMobile && (
         <div className="flex-shrink-0">
           <Image src="/image/footerImg.jpg" alt="Logo" width={75} height={75} />
         </div>
-      )}
+      )} */}
 
       {!isMobile ? ( // pc
         <div className="App-footer-content">
-          <div>
-            <p>東京都知事（1）第108005号</p>
+          <div className="flex justify-between">
+            <div>
+              {/* <p>東京都知事（1）第108005号</p>
             <p>京喬不動産株式会社 KEIKYO REAL ESTATE CO.,LTD.</p>
             <p>〒100-0005 東京都千代田区丸の内3丁目4-2 新日石ビルヂング7階713</p>
             <p>〒103-0002 東京都中央区日本橋馬喰町1丁目12-7 シティハイツ日本橋202</p>
-            <p>&copy; KEIKYO REAL ESTATE CO.,LTD. ALL RIGHTS RESERVED</p>
+            <p>&copy; KEIKYO REAL ESTATE CO.,LTD. ALL RIGHTS RESERVED</p> */}
+              <p>電話（Tel）：03-6228-3286</p>
+              <p>携帯（Mobile)： xxx-xxxx-xxxx</p>
+              <p>Wechat：XXXXX</p>
+            </div>
+            <div style={{ textAlign: 'right' }}>
+              <p>ファクス（Fax)： 03-6736-0422</p>
+              <p>メール（E-MAIL）： xxxxxx@MARSCAPITALJP.COM</p>
+              <p>WathsAPP：XXXXX</p>
+            </div>
+          </div>
 
+          <div className='bottom-0'>
+            <p>東京都知事（1）第108005号&nbsp;京喬不動産株式会社 &copy;KEIKYO REAL ESTATE CO.,LTD. ALL RIGHTS RESERVED</p>
           </div>
-          <div style={{ textAlign: 'right' }}>
-            <p>電話（Tel）：03-6228-3286</p>
-            <p>ファクス（Fax)： 03-6736-0422</p>
-            <p>携帯（Mobile)： xxx-xxxx-xxxx</p>
-            <p>メール（E-MAIL）： xxxxxx@MARSCAPITALJP.COM</p>
-          </div>
+
         </div>
 
       ) : ( // smartphone
@@ -74,7 +82,7 @@ const Footer: React.FC<FooterProps> = ({ floating = false }) => {
               <p>Mobile： xxx-xxxx-xxxx</p>
               <p>Wechat：XXXXX</p>
             </div>
-            <div>
+            <div style={{ textAlign: 'right' }}>
               {/* <p>ファクス（Fax)： 03-6736-0422</p>
               <p>メール（E-MAIL）： xxxxxx@MARSCAPITALJP.COM</p> */}
               <p>Fax： 03-6736-0422</p>
@@ -83,7 +91,7 @@ const Footer: React.FC<FooterProps> = ({ floating = false }) => {
             </div>
           </div>
           <div className='bottom-0'>
-            <p>東京都知事（1）第108005号</p>
+            {/* <p>東京都知事（1）第108005号</p> */}
             <p>京喬不動産株式会社 &copy;KEIKYO REAL ESTATE CO.,LTD. ALL RIGHTS RESERVED</p>
           </div>
 
