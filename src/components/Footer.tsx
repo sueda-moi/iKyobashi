@@ -49,8 +49,8 @@ const Footer: React.FC<FooterProps> = ({ floating = false }) => {
           {/* Pg001 ページでは非表示  */}
           {!isPg001 && (
             <div className='appFooterContractBG'>
-              <div>
-                <p>連絡方式&nbsp;Contact method</p>
+              <div className="font-bold text-shadow">
+                <p><span style={{ fontSize: '1.5rem' }}>連絡方式</span><span style={{ fontSize: '1.25rem' }}>&nbsp;Contact method</span></p>
               </div>
               <div className="flex justify-between">
                 <div>
@@ -78,8 +78,9 @@ const Footer: React.FC<FooterProps> = ({ floating = false }) => {
           {/* Pg001 ページでは非表示  */}
           {!isPg001 && (
             <div className='appFooterContractBG-smartphone'>
-              <div>
-                <p>連絡方式&nbsp;Contact method</p>
+              <div className="font-bold text-shadow">
+                <p><span style={{ fontSize: '1.5rem' }}>連絡方式</span><span style={{ fontSize: '1.25rem' }}>&nbsp;Contact method</span></p>
+
               </div>
               <div className="flex justify-between">
                 <div>
