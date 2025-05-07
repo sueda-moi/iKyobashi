@@ -67,38 +67,42 @@ const Footer: React.FC<FooterProps> = ({ floating = false }) => {
             </div>
           )}
           <div className='bottom-0 text-center'>
-            <p>東京都知事（1）第108005号&nbsp;京喬不動産株式会社 &copy;KEIKYO REAL ESTATE CO.,LTD. ALL RIGHTS RESERVED</p>
+            {/* <p>東京都知事（1）第108005号&nbsp;京喬不動産株式会社 &copy;KEIKYO REAL ESTATE CO.,LTD. ALL RIGHTS RESERVED</p> */}
+            <p>ALL RIGHTS RESERVED &copy;KEIKYO REAL ESTATE CO.,LTD. </p>
           </div>
 
         </div>
 
       ) : ( // smartphone
         <div className="App-footer-content-smartphone">
-          <div className='appFooterContractBG-smartphone'>
-            <div>
-              <p>連絡方式&nbsp;Contact method</p>
-            </div>
-            <div className="flex justify-between">
+          {/* Pg001 ページでは非表示  */}
+          {!isPg001 && (
+            <div className='appFooterContractBG-smartphone'>
               <div>
-                {/* <p>電話（Tel）：03-6228-3286</p> */}
-                <p>Tel：03-6228-3286</p>
-                {/* <p>携帯（Mobile)： xxx-xxxx-xxxx</p> */}
-                <p>Mobile： xxx-xxxx-xxxx</p>
-                <p>Wechat：XXXXX</p>
+                <p>連絡方式&nbsp;Contact method</p>
               </div>
-              <div style={{ textAlign: 'right' }}>
-                {/* <p>ファクス（Fax)： 03-6736-0422</p>
+              <div className="flex justify-between">
+                <div>
+                  {/* <p>電話（Tel）：03-6228-3286</p> */}
+                  <p>Tel：03-6228-3286</p>
+                  {/* <p>携帯（Mobile)： xxx-xxxx-xxxx</p> */}
+                  <p>Mobile： xxx-xxxx-xxxx</p>
+                  <p>Wechat：XXXXX</p>
+                </div>
+                <div style={{ textAlign: 'right' }}>
+                  {/* <p>ファクス（Fax)： 03-6736-0422</p>
               <p>メール（E-MAIL）： xxxxxx@MARSCAPITALJP.COM</p> */}
-                <p>Fax： 03-6736-0422</p>
-                <p>E-MAIL： xxxxxx@MARSCAPITALJP.COM</p>
-                <p>WathsAPP：XXXXX</p>
+                  <p>Fax： 03-6736-0422</p>
+                  <p>E-MAIL： xxxxxx@MARSCAPITALJP.COM</p>
+                  <p>WathsAPP：XXXXX</p>
+                </div>
               </div>
             </div>
-          </div>
-
-          <div className='bottom-0'>
+          )}
+          <div className='bottom-0 text-center'>
             {/* <p>東京都知事（1）第108005号</p> */}
-            <p>京喬不動産株式会社 &copy;KEIKYO REAL ESTATE CO.,LTD. ALL RIGHTS RESERVED</p>
+            {/* 京喬不動産株式会社 */}
+            <p>ALL RIGHTS RESERVED &copy;KEIKYO REAL ESTATE CO.,LTD. </p>
           </div>
 
         </div>
