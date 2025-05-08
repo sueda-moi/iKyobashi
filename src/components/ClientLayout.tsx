@@ -1,4 +1,4 @@
-'use client'; // このコンポーネントはクライアント側で実行されることを明示
+'use client'; // Explicitly declare this as a client component
 
 import { usePathname } from 'next/navigation';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -8,60 +8,62 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import LoadingScreen from '@/components/LoadingScreen/LoadingScreen';
 import { usePageTransition } from '@/hooks/usePageTransition';
+import { useLocaleStore } from '@/store/useLocaleStore';
 
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
 
-  // ホーム画面（Pg001）かどうかを判定（フッターの浮き表示に使用）
+  // Check if the current page is the home screen (used to float the footer)
   const isHomeScreenPage = pathname === '/Pg001';
 
-  // ページ遷移時のローディング表示時間（ミリ秒）
   const LOADING_DURATION = 400;
 
-  // カスタムフック：ページ遷移の状態を取得（ローディング制御）
+  // Custom hook to control loading state during page transitions
   const { loading } = usePageTransition(LOADING_DURATION);
 
-  // 初回アクセス時のローディング表示制御
+  // Handle first-load animation
   const [isFirstLoadFinished, setIsFirstLoadFinished] = useState(false);
+  
+  // Zustand: language initialization
+  const setLocale = useLocaleStore((state) => state.setLocale);
 
   useEffect(() => {
     const handleInitialLoad = () => {
-      // ページ完全読み込み後、一定時間待ってから表示開始
+      // Set default language (e.g., Japanese). You can read from localStorage instead if needed.
+      setLocale('ja');
+
+      // Delay content appearance for loading animation
       setTimeout(() => {
         setIsFirstLoadFinished(true);
       }, LOADING_DURATION);
     };
 
-    // ドキュメントがすでに読み込み完了している場合
     if (document.readyState === 'complete') {
       handleInitialLoad();
     } else {
-      // 読み込み完了イベントにリスナーを追加
       window.addEventListener('load', handleInitialLoad);
       return () => window.removeEventListener('load', handleInitialLoad);
     }
-  }, []);
+  }, [setLocale]);
 
-  // ヘッダーメニューの開閉状態
+  // Header menu toggle state
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const toggleMenu = () => setIsMenuOpen(prev => !prev);
 
-  // 初回読み込みが終わっていない場合、ローディング画面を表示
+  // Show loading screen on first load
   if (!isFirstLoadFinished) {
     return <LoadingScreen />;
   }
 
   return (
     <>
-      {/* ヘッダーコンポーネント（メニュー開閉付き） */}
+      {/* Header with menu toggle */}
       <Header isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
 
-      {/* ページ遷移時のアニメーション用ラッパー */}
+      {/* Animate page transitions */}
       <AnimatePresence mode="wait">
-        {/* ローディング中はアニメ付きのローディング画面を表示 */}
         {loading && <LoadingScreen key="loader" />}
 
-        {/* ページ遷移が完了したら、子コンテンツを表示 */}
         {!loading && (
           <motion.div
             key={pathname}
@@ -76,7 +78,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
         )}
       </AnimatePresence>
 
-      {/* フッターコンポーネント（ホーム画面では浮かせて表示） */}
+      {/* Footer (floats if on home screen) */}
       <Footer floating={isHomeScreenPage} />
     </>
   );
