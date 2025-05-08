@@ -1,8 +1,14 @@
-import type { NextConfig } from "next";
+import createIntlPlugin from 'next-intl/plugin';
 
-const nextConfig: NextConfig = {
-  /* config options here */
+
+const plugin = createIntlPlugin('./src/i18n.ts');
+//const plugin = createIntlPlugin();
+
+const nextConfig = {
   reactStrictMode: true,
+  experimental: {
+    serverActions: {}
+  }
 };
 
-export default nextConfig;
+export default plugin(nextConfig);
