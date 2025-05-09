@@ -1,5 +1,5 @@
 'use client';
-
+type SupportedLocale = 'ja' | 'en' | 'zh';
 import { useLocaleStore } from '@/store/useLocaleStore';
 
 const locales = [
@@ -12,7 +12,7 @@ export default function LanguageSwitcher() {
   const { locale, setLocale } = useLocaleStore();
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setLocale(e.target.value as any);
+    setLocale(e.target.value as SupportedLocale);
   };
 
   return (

@@ -1,25 +1,40 @@
 import { create } from 'zustand';
 
 type Locale = 'ja' | 'en' | 'zh';
+type MessageFile = 'about' | 'contact' | 'home' | 'common' | 'help';
+type Messages = Record<MessageFile, Record<string, string>>;
 
 interface LocaleState {
   locale: Locale;
-  messages: Record<string, any>;
+  messages: Messages;
   setLocale: (newLocale: Locale) => Promise<void>;
 }
 
 export const useLocaleStore = create<LocaleState>((set) => ({
   locale: 'ja',
-  messages: {},
+  messages: {
+    about: {},
+    contact: {},
+    home: {},
+    common: {},
+    help: {},
+  },
   setLocale: async (newLocale) => {
-    const loadedMessages: Record<string, any> = {};
-    const messageFiles = ['about', 'contact', 'home', 'common', 'help'];
+    const loadedMessages: Messages = {
+      about: {},
+      contact: {},
+      home: {},
+      common: {},
+      help: {},
+    };
+
+    const messageFiles: MessageFile[] = ['about', 'contact', 'home', 'common', 'help'];
 
     for (const file of messageFiles) {
-      const module = await import(`../../messages/${newLocale}/${file}.json`);
-      loadedMessages[file] = module.default;
+      const mod = await import(`../../messages/${newLocale}/${file}.json`);
+      loadedMessages[file] = mod.default as Record<string, string>;
     }
 
     set({ locale: newLocale, messages: loadedMessages });
-  }
+  },
 }));
