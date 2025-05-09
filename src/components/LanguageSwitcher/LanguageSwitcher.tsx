@@ -16,12 +16,18 @@ export default function LanguageSwitcher() {
   };
 
   return (
-    <select value={locale} onChange={handleChange} className="fixed top-4 right-4 z-50">
-      {locales.map((l) => (
-        <option key={l.code} value={l.code}>
-          {l.label}
-        </option>
-      ))}
-    </select>
+    <div className="text-white mt-4 flex justify-end pr-4">
+      <select
+        value={locale}
+        onChange={handleChange}
+        className="bg-transparent border border-white text-white px-3 py-1 rounded-md text-sm focus:outline-none hover:bg-white hover:text-black transition-all"
+      >
+        {locales.map((l) => (
+          <option key={l.code} value={l.code} className="text-black">
+            {l.label}
+          </option>
+        ))}
+      </select>
+    </div>
   );
 }

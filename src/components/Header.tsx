@@ -5,7 +5,8 @@ import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { FiAlignJustify, FiX } from 'react-icons/fi'; 
+import { FiAlignJustify, FiX } from 'react-icons/fi';
+import LanguageSwitcher from './LanguageSwitcher/LanguageSwitcher';
 
 interface HeaderProps {
   isMenuOpen: boolean;
@@ -52,30 +53,31 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen, toggleMenu }) => {
       {/* Add onClick handler to toggle menu */}
       <div className={`menu-icon ${isMenuOpen ? 'open' : ''}`} onClick={toggleMenu}>
         <span>
-        <FiAlignJustify size={24} color="white" />
+          <FiAlignJustify size={24} color="white" />
         </span>
       </div>
 
       {/* Navigation */}
       <nav className={`navbar ${isMenuOpen ? 'open' : ''}`}>
+
         {/* colose button，only show when nav open */}
         {isMenuOpen && isMobile && (
-          <div className="close-icon" 
-	       onClick={toggleMenu}>
+          <div className="close-icon"
+            onClick={toggleMenu}>
             <FiX size={30} color="white" />
           </div>
         )}
         <ul className="nav-list">
-        {navItems.map((item) => {
+          {navItems.map((item) => {
             const isActive = pathname === item.path;
             return (
               <div key={item.path}>
                 {isActive ? (
                   <span className="nav-link active">{item.label}</span>
                 ) : (
-                  <Link href={item.path} 
-                  className="nav-link"
-                  onClick={toggleMenu}>
+                  <Link href={item.path}
+                    className="nav-link"
+                    onClick={toggleMenu}>
                     {item.label}
                   </Link>
                 )}
@@ -83,7 +85,16 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen, toggleMenu }) => {
             );
           })}
         </ul>
+
       </nav>
+
+
+      {/* Language Switcher (you can extract this as a component) */}
+      {!isMobile && (
+        <div className="language-switcher mt-6">
+          <LanguageSwitcher />
+        </div>
+      )}
 
 
     </header>
