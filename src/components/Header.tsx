@@ -42,6 +42,22 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen, toggleMenu }) => {
     { path: '/Pg004', label: 'お問い合わせ' },
   ];
 
+
+  // useEffect(() => {
+  //     const observer = new MutationObserver((mutations) => {
+  //       for (const mutation of mutations) {
+  //         if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
+  //           console.log('HTML style changed to:', document.documentElement.getAttribute('style'));
+  //           console.trace(); // 打印调用栈，看看是谁触发的
+  //         }
+  //       }
+  //     });
+    
+  //     observer.observe(document.documentElement, { attributes: true });
+    
+  //     return () => observer.disconnect();
+  //   }, []);
+
   return (
     <header className={`${scrolled ? 'scrolled' : ''}`}>
 
@@ -91,7 +107,7 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen, toggleMenu }) => {
 
       {/* Language Switcher (you can extract this as a component) */}
       {!isMobile && (
-        <div className="language-switcher mt-6">
+        <div className="pr-[20px] pl-[20px] text-white">
           <LanguageSwitcher />
         </div>
       )}

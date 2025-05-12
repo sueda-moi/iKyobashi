@@ -23,9 +23,31 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
 
   // Handle first-load animation
   const [isFirstLoadFinished, setIsFirstLoadFinished] = useState(false);
-  
+
   // Zustand: language initialization
   const setLocale = useLocaleStore((state) => state.setLocale);
+  useEffect(() => {
+    const unlockScroll = () => {
+      document.documentElement.style.overflow = '';
+      document.documentElement.style.paddingRight = '';
+    };
+
+    const observer = new MutationObserver(() => {
+      const html = document.documentElement;
+      if (html.style.overflow === 'hidden' || html.style.paddingRight) {
+        console.warn('[Fix] Detected scroll lock. Unlocking.');
+        unlockScroll();
+      }
+    });
+
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['style'],
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
 
   useEffect(() => {
     const handleInitialLoad = () => {
@@ -54,6 +76,9 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
   if (!isFirstLoadFinished) {
     return <LoadingScreen />;
   }
+
+
+
 
   return (
     <>
