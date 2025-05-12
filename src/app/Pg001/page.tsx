@@ -45,14 +45,14 @@ const Pg001: React.FC = () => {
           WELCOME
         </motion.p>
 
-        <motion.h1
+        <motion.p
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.6 }}
-          className="text-4xl md:text-5xl font-bold mt-4 gradient-text"
+          className="text-[4rem] font-bold mt-4 gradient-text"
         >
           自由に、未来に、輝く
-        </motion.h1>
+        </motion.p>
 
         <motion.button
           onClick={handleClick}

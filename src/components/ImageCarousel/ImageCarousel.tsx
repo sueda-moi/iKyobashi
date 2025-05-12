@@ -20,10 +20,10 @@ const ImageCarousel: React.FC = () => {
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {
-    // 一定時間（2秒）ごとに画像を切り替える
+    // 一定時間（5秒）ごとに画像を切り替える
     const interval = setInterval(() => {
       setCurrent((prev) => (prev + 1) % images.length);
-    }, 2000);
+    }, 5000);
 
     return () => clearInterval(interval);
   }, []);
