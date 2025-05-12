@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import ImageCarousel from '@/components/ImageCarousel/ImageCarousel';
+import "./Pg001.css"
 
 const Pg001: React.FC = () => {
   const router = useRouter();
@@ -40,7 +41,7 @@ const Pg001: React.FC = () => {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.6 }}
-          className="text-lg tracking-widest gradient-text"
+          className="responsive-title gradient-text"
         >
           WELCOME
         </motion.p>
@@ -49,7 +50,7 @@ const Pg001: React.FC = () => {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.6 }}
-          className="text-[4rem] font-bold mt-4 gradient-text"
+          className="responsive-subtitle gradient-text"
         >
           自由に、未来に、輝く
         </motion.p>
@@ -58,7 +59,7 @@ const Pg001: React.FC = () => {
           onClick={handleClick}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="mt-8 px-6 py-3 bg-transparent border-2 border-[#e5e8eb] text-[#e4e9ec] font-semibold rounded-full transition-all duration-300 hover:bg-[#e5e8eb] hover:text-black"
+          className="custom-button"
         >
           LEARN MORE
         </motion.button>
