@@ -7,6 +7,9 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { FiAlignJustify, FiX } from 'react-icons/fi';
 import LanguageSwitcher from './LanguageSwitcher/LanguageSwitcher';
+import { useMessage } from '@/lib/useMessage';
+
+
 
 interface HeaderProps {
   isMenuOpen: boolean;
@@ -14,10 +17,15 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ isMenuOpen, toggleMenu }) => {
+
+  const getMessage = useMessage(); // メッセージ取得関数を使用
+
   const [scrolled, setScrolled] = useState(false);
   const [isMobile, setIsMobile] = useState(false); //screen width detection 
 
   const pathname = usePathname();
+  // const { messages } = useLocaleStore();
+  // const headerMessages = messages['header'];
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -35,28 +43,19 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen, toggleMenu }) => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  // const navItems = [
+  //   { path: '/Pg001', label: 'ホーム' },
+  //   { path: '/Pg002', label: '概要' },
+  //   { path: '/Pg003', label: '事業内容' },
+  //   { path: '/Pg004', label: 'お問い合わせ' },
+  // ];
   const navItems = [
-    { path: '/Pg001', label: 'ホーム' },
-    { path: '/Pg002', label: '概要' },
-    { path: '/Pg003', label: '事業内容' },
-    { path: '/Pg004', label: 'お問い合わせ' },
+    { path: '/Pg001', label: getMessage('header', 'nav_home') },
+    { path: '/Pg002', label: getMessage('header', 'nav_about') },
+    { path: '/Pg003', label: getMessage('header', 'nav_services') },
+    { path: '/Pg004', label: getMessage('header', 'nav_contact') },
   ];
 
-
-  // useEffect(() => {
-  //     const observer = new MutationObserver((mutations) => {
-  //       for (const mutation of mutations) {
-  //         if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
-  //           console.log('HTML style changed to:', document.documentElement.getAttribute('style'));
-  //           console.trace(); // 打印调用栈，看看是谁触发的
-  //         }
-  //       }
-  //     });
-    
-  //     observer.observe(document.documentElement, { attributes: true });
-    
-  //     return () => observer.disconnect();
-  //   }, []);
 
   return (
     <header className={`${scrolled ? 'scrolled' : ''}`}>

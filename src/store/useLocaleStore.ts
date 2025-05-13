@@ -1,7 +1,8 @@
 import { create } from 'zustand';
 
 type Locale = 'ja' | 'en' | 'zh';
-type MessageFile = 'about' | 'contact' | 'home' | 'common' | 'help';
+type MessageFile = 'about' | 'contact' | 'home' | 'common' | 'help' | 'header' | 'footer';
+
 type Messages = Record<MessageFile, Record<string, string>>;
 
 interface LocaleState {
@@ -18,6 +19,8 @@ export const useLocaleStore = create<LocaleState>((set) => ({
     home: {},
     common: {},
     help: {},
+    header: {},
+    footer: {},
   },
   setLocale: async (newLocale) => {
     const loadedMessages: Messages = {
@@ -26,9 +29,11 @@ export const useLocaleStore = create<LocaleState>((set) => ({
       home: {},
       common: {},
       help: {},
+      header: {},
+      footer: {},
     };
 
-    const messageFiles: MessageFile[] = ['about', 'contact', 'home', 'common', 'help'];
+    const messageFiles: MessageFile[] = ['about', 'contact', 'home', 'common', 'help', 'header', 'footer'];
 
     for (const file of messageFiles) {
       const mod = await import(`../../messages/${newLocale}/${file}.json`);
@@ -38,3 +43,5 @@ export const useLocaleStore = create<LocaleState>((set) => ({
     set({ locale: newLocale, messages: loadedMessages });
   },
 }));
+
+export type { MessageFile };
