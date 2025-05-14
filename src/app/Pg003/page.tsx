@@ -4,6 +4,7 @@ import './Pg003.css';
 import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import BusinessCarousel from '@/components/BusinessCard/BusinessCarousel';
+import { useMessage } from '@/lib/useMessage';
 
 import dynamic from 'next/dynamic';
 
@@ -11,28 +12,29 @@ import dynamic from 'next/dynamic';
 const ScrollLottie = dynamic(() => import('@/components/ScrollLottie/ScrollLottie'), { ssr: false });
 
 const Pg003: React.FC = () => {
-      const [isAtBottom, setIsAtBottom] = useState(false);
-      const sectionTeamRef = useRef<HTMLDivElement>(null);
-    
-      // 📜 スクロール位置によってページ下部かどうかを判定
-      useEffect(() => {
-        const handleScroll = () => {
-          const scrollTop = window.scrollY;
-          const windowHeight = window.innerHeight;
-          const fullHeight = document.documentElement.scrollHeight;
-    
-          // 「ページ最下部」に到達していれば true
-          setIsAtBottom(scrollTop + windowHeight >= fullHeight - 20);
-        };
-    
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-      }, []);
-    
-      // 🔍 指定したセクションにスムーズスクロール
-      const scrollToSection = (ref: React.RefObject<HTMLDivElement | null>) => {
-        ref.current?.scrollIntoView({ behavior: 'smooth' });
-      };
+  const getMessage = useMessage();
+  const [isAtBottom, setIsAtBottom] = useState(false);
+  const sectionTeamRef = useRef<HTMLDivElement>(null);
+
+  // 📜 スクロール位置によってページ下部かどうかを判定
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const fullHeight = document.documentElement.scrollHeight;
+
+      // 「ページ最下部」に到達していれば true
+      setIsAtBottom(scrollTop + windowHeight >= fullHeight - 20);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // 🔍 指定したセクションにスムーズスクロール
+  const scrollToSection = (ref: React.RefObject<HTMLDivElement | null>) => {
+    ref.current?.scrollIntoView({ behavior: 'smooth' });
+  };
   return (
     <div className="container">
       {/* サマリー画像セクション */}
@@ -55,10 +57,9 @@ const Pg003: React.FC = () => {
       <div className='childContent'>
         {/* 事業概要セクション */}
         <section className="mb-12 px-4 text-center">
-          <h1 className="text-3xl font-bold mb-4">事業内容</h1>
+          <h1 className="text-3xl font-bold mb-4">{getMessage('services', 'pg003_title')}</h1>
           <p className="text-base text-gray-700 max-w-3xl mx-auto">
-            私たちは不動産を中心に多様なサービスを提供しています。
-            お客様のニーズに合わせ、柔軟かつ専門的な対応を行います。
+            {getMessage('services', 'pg003_paragraph_1')}
           </p>
         </section>
 
@@ -74,7 +75,7 @@ const Pg003: React.FC = () => {
         */}
 
         <section className="services-section">
-          <h2 className="text-2xl font-bold text-center mb-8">サービス一覧</h2>
+          <h2 className="text-2xl font-bold text-center mb-8">{getMessage('services', 'pg003_services_title')}</h2>
           <BusinessCarousel />
         </section>
       </div>

@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import styles from './InfoCardButton.module.css';
+import { useLocaleStore } from '@/store/useLocaleStore';
+import { useMessage } from '@/lib/useMessage';
 
 type InfoCardButtonProps = {
   onClickTeam: () => void;
@@ -14,9 +16,12 @@ const InfoCardButton: React.FC<InfoCardButtonProps> = ({
 }) => {
   const [isMobile, setIsMobile] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null); // Ref for the whole component
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  // 📱 Detect mobile screen
+  const { locale } = useLocaleStore();
+  const isCJK = locale === 'ja' || locale === 'zh';
+  const getMessage = useMessage();
+
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
@@ -65,32 +70,20 @@ const InfoCardButton: React.FC<InfoCardButtonProps> = ({
       {/* 📂 Expandable card list */}
       {isOpen && (
         <div className={styles.cardMenu}>
-          <div
-            className={styles.cardItem}
-            onClick={() => {
-              onClickTeam();
-              setIsOpen(false);
-            }}
-          >
-            <h3>チーム紹介</h3>
+          <div className={styles.cardItem} onClick={() => { onClickTeam(); setIsOpen(false); }}>
+            <h3 className={isCJK ? styles.verticalText : styles.horizontalText}>
+              {getMessage('about', 'pg002_nav_team')}
+            </h3>
           </div>
-          <div
-            className={styles.cardItem}
-            onClick={() => {
-              onClickCompany();
-              setIsOpen(false);
-            }}
-          >
-            <h3>会社概要</h3>
+          <div className={styles.cardItem} onClick={() => { onClickCompany(); setIsOpen(false); }}>
+            <h3 className={isCJK ? styles.verticalText : styles.horizontalText}>
+              {getMessage('about', 'pg002_nav_company')}
+            </h3>
           </div>
-          <div
-            className={styles.cardItem}
-            onClick={() => {
-              onClickPhotos();
-              setIsOpen(false);
-            }}
-          >
-            <h3>企業写真</h3>
+          <div className={styles.cardItem} onClick={() => { onClickPhotos(); setIsOpen(false); }}>
+            <h3 className={isCJK ? styles.verticalText : styles.horizontalText}>
+              {getMessage('about', 'pg002_nav_photos')}
+            </h3>
           </div>
         </div>
       )}

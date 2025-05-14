@@ -26,6 +26,18 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
 
   // Zustand: language initialization
   const setLocale = useLocaleStore((state) => state.setLocale);
+
+  // ✅ Always unlock scroll on route change (prevents stuck scroll after leaving Pg001)
+  useEffect(() => {
+    const unlockScroll = () => {
+      document.documentElement.style.overflow = '';
+      document.documentElement.style.paddingRight = '';
+      document.body.style.overflow = '';
+    };
+    unlockScroll();
+  }, [pathname]);
+
+  // ✅ MutationObserver fallback: auto-fix scroll lock if caused by 3rd-party animation or transitions
   useEffect(() => {
     const unlockScroll = () => {
       document.documentElement.style.overflow = '';
@@ -48,7 +60,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
     return () => observer.disconnect();
   }, []);
 
-
+  // ✅ Initialize default language on first load
   useEffect(() => {
     const handleInitialLoad = () => {
       // Set default language (e.g., Japanese). You can read from localStorage instead if needed.
@@ -71,6 +83,15 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
   // Header menu toggle state
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const toggleMenu = () => setIsMenuOpen(prev => !prev);
+
+  useEffect(() => {
+  const unlockScroll = () => {
+    document.documentElement.style.overflow = '';
+    document.documentElement.style.paddingRight = '';
+    document.body.style.overflow = '';
+  };
+  unlockScroll();
+}, [pathname]);
 
   // Show loading screen on first load
   if (!isFirstLoadFinished) {

@@ -85,3 +85,14 @@
   letter-spacing: 1px;
 }
 
+.verticalText {
+  writing-mode: vertical-rl;
+  text-align: center;
+}
+
+.horizontalText {
+  writing-mode: horizontal-tb;
+  text-align: center;
+}
+
+

@@ -6,15 +6,27 @@ const config: Config = {
     './src/components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: [
+          '"Noto Sans"',
+          '"PingFang SC"',
+          '"Microsoft YaHei"',
+          '"Helvetica Neue"',
+          'Helvetica',
+          'Arial',
+          'sans-serif',
+        ],
+      },
+    },
     screens: {
-      sm: '640px',  //  >= 640px
-      md: '768px',  //  >= 768px
-      lg: '1024px', //  >= 1024px
-      xl: '1280px', //  >= 1280px
+      sm: '640px',
+      md: '768px',
+      lg: '1024px',
+      xl: '1280px',
     },
   },
   plugins: [],
-};
+}
 
-export default config;
+export default config
