@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import './Pg004.css'; // 必要なら Tailwind に移行可
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
+import { useMessage } from '@/lib/useMessage'; 
 
 // ⚙️ LottieアニメーションをSSR無効で読み込み（クライアント専用）
 const ScrollLottie = dynamic(() => import('@/components/ScrollLottie/ScrollLottie'), { ssr: false });
@@ -12,6 +13,7 @@ const Pg004: React.FC = () => {
 
     const [isAtBottom, setIsAtBottom] = useState(false);
     const sectionTeamRef = useRef<HTMLDivElement>(null);
+     const getMessage = useMessage();
   
     // 📜 スクロール位置によってページ下部かどうかを判定
     useEffect(() => {
@@ -54,12 +56,12 @@ const Pg004: React.FC = () => {
       <div className='childContent'>
         {/* 会社住所 + 地図 */}
         <section id="access" className="max-w-5xl mx-auto">
-          <h2 className="text-2xl font-semibold mb-6">会社アクセス</h2>
+          <h2 className="text-2xl font-semibold mb-6">{getMessage('contact', 'pg004_access_title')}</h2>
 
           {/* 丸の内オフィス */}
           <div className="mb-12" ref={sectionTeamRef}>
-            <h3 className="text-xl font-semibold mb-2">丸の内オフィス</h3>
-            <p className="mb-2">〒100-0005 東京都千代田区丸の内3丁目4-2 新日石ビルヂング7階713</p>
+            <h3 className="text-xl font-semibold mb-2">{getMessage('contact', 'pg004_office_marunouchi')}</h3>
+            <p className="mb-2">{getMessage('contact', 'pg004_office_marunouchi_address')}</p>
             <div className="w-full h-64 border">
               <iframe
                 src="https://maps.google.com/maps?q=東京都千代田区丸の内3丁目4-2&t=&z=15&ie=UTF8&iwloc=&output=embed"
@@ -73,8 +75,8 @@ const Pg004: React.FC = () => {
 
           {/* 日本橋オフィス */}
           <div>
-            <h3 className="text-xl font-semibold mb-2">日本橋オフィス</h3>
-            <p className="mb-2">〒103-0002 東京都中央区日本橋馬喰町1丁目12-7 シティハイツ日本橋202</p>
+            <h3 className="text-xl font-semibold mb-2">{getMessage('contact', 'pg004_office_nihonbashi')}</h3>
+            <p className="mb-2">{getMessage('contact', 'pg004_office_nihonbashi_address')}</p>
             <div className="w-full h-64 border">
               <iframe
                 src="https://maps.google.com/maps?q=東京都中央区日本橋馬喰町1丁目12-7&t=&z=15&ie=UTF8&iwloc=&output=embed"
@@ -89,40 +91,41 @@ const Pg004: React.FC = () => {
 
         {/* お問い合わせ方法 */}
         <section id="contact-method" className="max-w-5xl mx-auto">
-          <h2 className="text-2xl font-semibold mb-4">お問い合わせ方法</h2>
-          <p className="mb-4">下記の方法でお気軽にお問い合わせください。</p>
+          <h2 className="text-2xl font-semibold mb-4">{getMessage('contact', 'pg004_contact_title')}</h2>
+          <p className="mb-4">{getMessage('contact', 'pg004_contact_instruction')}</p>
         </section>
 
         {/* 問い合わせフォーム */}
         <section id="contact-form" className="max-w-2xl mx-auto">
-          <h3 className="text-xl font-semibold mb-4">メールでのお問い合わせ</h3>
+          <h3 className="text-xl font-semibold mb-4">{getMessage('contact', 'pg004_form_title')}</h3>
           <form className="space-y-4">
             <div>
-              <label htmlFor="name" className="block text-sm font-medium">お名前</label>
+              <label htmlFor="name" className="block text-sm font-medium">
+                {getMessage('contact', 'pg004_form_name')}
+              </label>
               <input id="name" type="text" className="w-full border px-3 py-2 rounded" />
             </div>
             <div>
-              <label htmlFor="phone" className="block text-sm font-medium">電話番号</label>
+              <label htmlFor="phone" className="block text-sm font-medium">
+                {getMessage('contact', 'pg004_form_phone')}
+              </label>
               <input id="phone" type="tel" className="w-full border px-3 py-2 rounded" />
             </div>
             <div>
-              <label htmlFor="message" className="block text-sm font-medium">メッセージ</label>
+              <label htmlFor="message" className="block text-sm font-medium">
+                {getMessage('contact', 'pg004_form_message')}
+              </label>
               <textarea id="message" rows={4} className="w-full border px-3 py-2 rounded" />
             </div>
             <button
               type="submit"
               className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
             >
-              送信
+              {getMessage('contact', 'pg004_form_submit')}
             </button>
           </form>
         </section>
       </div>
-
-
-
-
-
     </main>
   );
 };

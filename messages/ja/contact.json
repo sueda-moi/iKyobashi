@@ -1,19 +1,14 @@
 {
-    "contact_method": "連絡方式",
-    "tel": "電話（Tel）：03-6228-3286",
-    "mobile": "携帯（Mobile）：xxx-xxxx-xxxx",
-    "fax": "ファクス（Fax）：03-6736-0422",
-    "email": "メール（E-MAIL）：xxxxxx@MARSCAPITALJP.COM",
-    "wechat": "Wechat：XXXXX",
-    "whatsapp": "WathsAPP：XXXXX",
-    "company_rights": "京喬不動産株式会社 ©KEIKYO REAL ESTATE CO.,LTD. ALL RIGHTS RESERVED",
-    "license_info": "東京都知事（1）第108005号",
-    "home": "ホーム",
-    "summary": "概要",
-    "services": "事業内容",
-    "contact": "お問い合わせ",
-    "language": "言語",
-    "japanese": "日本語",
-    "english": "英語"
-  }
-  
+  "pg004_access_title": "会社アクセス",
+  "pg004_office_marunouchi": "丸の内オフィス",
+  "pg004_office_marunouchi_address": "〒100-0005 東京都千代田区丸の内3丁目4-2 新日石ビルヂング7階713",
+  "pg004_office_nihonbashi": "日本橋オフィス",
+  "pg004_office_nihonbashi_address": "〒103-0002 東京都中央区日本橋馬喰町1丁目12-7 シティハイツ日本橋202",
+  "pg004_contact_title": "お問い合わせ方法",
+  "pg004_contact_instruction": "下記の方法でお気軽にお問い合わせください。",
+  "pg004_form_title": "メールでのお問い合わせ",
+  "pg004_form_name": "お名前",
+  "pg004_form_phone": "電話番号",
+  "pg004_form_message": "メッセージ",
+  "pg004_form_submit": "送信"
+}

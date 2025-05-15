@@ -186,10 +186,11 @@ header.scrolled {
   position: relative;
   color: white;
   text-decoration: none;
-  font-size: 16px;
+  font-size: 0.8rem;
   padding-bottom: 5px;
   transition: all 0.3s ease;
 }
+
 
 .nav-link::after {
   content: '';
@@ -239,7 +240,12 @@ header.scrolled {
 }
 
 .navbar div {
-  margin: 0 10px;
+  position: relative;
+  color: white;
+  text-decoration: none;
+  font-size: 0.8rem;
+  padding-bottom: 5px;
+  transition: all 0.3s ease;
 }
 
 .navbar a {
@@ -318,7 +324,7 @@ header.scrolled {
 
   /* メニュー項目のスタイル */
   .navbar div {
-    font-size: 1.5rem;
+    font-size: 0.8rem;
     /* フォントサイズを大きめに設定 */
     text-align: center;
     /* テキストを中央揃え */
@@ -418,3 +424,48 @@ header.scrolled {
 .text-shadow {
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
+
+/*"言語を選択"*/
+.mobile-lang-toggle {
+  text-align: center;
+  margin-top: 12px;
+}
+
+.mobile-lang-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 8px;
+  align-items: center;
+}
+
+.mobile-lang-button {
+  font-size: 0.8rem;
+  /* just like nav-link */
+  color: white;
+  background: transparent;
+  border: none;
+  padding: 4px 0;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.mobile-lang-button:hover,
+.mobile-lang-button.active {
+  color: #faec4c;
+  font-weight: bold;
+}
+
+.mobile-lang-button.active {
+  font-weight: bold;
+  color: #4cfaa0;
+  pointer-events: none;
+  cursor: default;
+}
+
+.mobile-lang-button.active::after {
+  width: 100%;
+  background-color: #73fb42;
+}
+
+/*"言語を選択"*/

@@ -1,19 +1,14 @@
 {
-    "contact_method": "連絡方式",
-    "tel": "電話（Tel）：03-6228-3286",
-    "mobile": "携帯（Mobile）：xxx-xxxx-xxxx",
-    "fax": "ファクス（Fax）：03-6736-0422",
-    "email": "メール（E-MAIL）：xxxxxx@MARSCAPITALJP.COM",
-    "wechat": "Wechat：XXXXX",
-    "whatsapp": "WathsAPP：XXXXX",
-    "company_rights": "京喬不動産株式会社 ©KEIKYO REAL ESTATE CO.,LTD. ALL RIGHTS RESERVED",
-    "license_info": "東京都知事（1）第108005号",
-    "home": "ホーム",
-    "summary": "概要",
-    "services": "事業内容",
-    "contact": "お問い合わせ",
-    "language": "言語",
-    "japanese": "日本語",
-    "english": "英語"
-  }
-  
+  "pg004_access_title": "Company Access",
+  "pg004_office_marunouchi": "Marunouchi Office",
+  "pg004_office_marunouchi_address": "7F-713, Shin-Nisseki Building, 3-4-2 Marunouchi, Chiyoda-ku, Tokyo 100-0005",
+  "pg004_office_nihonbashi": "Nihonbashi Office",
+  "pg004_office_nihonbashi_address": "202 City Heights Nihonbashi, 1-12-7 Bakurocho, Nihonbashi, Chuo-ku, Tokyo 103-0002",
+  "pg004_contact_title": "Contact Methods",
+  "pg004_contact_instruction": "Feel free to reach out to us using the methods below.",
+  "pg004_form_title": "Contact via Email",
+  "pg004_form_name": "Your Name",
+  "pg004_form_phone": "Phone Number",
+  "pg004_form_message": "Message",
+  "pg004_form_submit": "Submit"
+}
