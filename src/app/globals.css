@@ -30,7 +30,8 @@ header {
   right: 0;
   z-index: 999;
   /* Bring header to the top, above the video */
-  background-color: transparent;
+  /*background-color: transparent;*/
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), transparent);
   /* Optional: background color with opacity */
   color: white;
   display: flex;

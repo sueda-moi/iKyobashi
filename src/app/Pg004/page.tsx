@@ -4,41 +4,41 @@ import React, { useEffect, useRef, useState } from 'react';
 import './Pg004.css'; // 必要なら Tailwind に移行可
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
-import { useMessage } from '@/lib/useMessage'; 
+import { useMessage } from '@/lib/useMessage';
 
 // ⚙️ LottieアニメーションをSSR無効で読み込み（クライアント専用）
 const ScrollLottie = dynamic(() => import('@/components/ScrollLottie/ScrollLottie'), { ssr: false });
 
 const Pg004: React.FC = () => {
 
-    const [isAtBottom, setIsAtBottom] = useState(false);
-    const sectionTeamRef = useRef<HTMLDivElement>(null);
-     const getMessage = useMessage();
-  
-    // 📜 スクロール位置によってページ下部かどうかを判定
-    useEffect(() => {
-      const handleScroll = () => {
-        const scrollTop = window.scrollY;
-        const windowHeight = window.innerHeight;
-        const fullHeight = document.documentElement.scrollHeight;
-  
-        // 「ページ最下部」に到達していれば true
-        setIsAtBottom(scrollTop + windowHeight >= fullHeight - 20);
-      };
-  
-      window.addEventListener('scroll', handleScroll);
-      return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
-  
-    // 🔍 指定したセクションにスムーズスクロール
-    const scrollToSection = (ref: React.RefObject<HTMLDivElement | null>) => {
-      ref.current?.scrollIntoView({ behavior: 'smooth' });
+  const [isAtBottom, setIsAtBottom] = useState(false);
+  const sectionTeamRef = useRef<HTMLDivElement>(null);
+  const getMessage = useMessage();
+
+  // 📜 スクロール位置によってページ下部かどうかを判定
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const fullHeight = document.documentElement.scrollHeight;
+
+      // 「ページ最下部」に到達していれば true
+      setIsAtBottom(scrollTop + windowHeight >= fullHeight - 20);
     };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // 🔍 指定したセクションにスムーズスクロール
+  const scrollToSection = (ref: React.RefObject<HTMLDivElement | null>) => {
+    ref.current?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
     <main className="px-4 py-8 space-y-16">
       <div className="container">
-      <div className="flex w-full pb-[60px] relative h-[800px] mb-8">
+        <div className="flex w-full pb-[60px] relative h-[800px] mb-8">
           <Image src="/image/conversation.jpg"
             alt="サマリー画像"
             fill
@@ -98,24 +98,57 @@ const Pg004: React.FC = () => {
         {/* 問い合わせフォーム */}
         <section id="contact-form" className="max-w-2xl mx-auto">
           <h3 className="text-xl font-semibold mb-4">{getMessage('contact', 'pg004_form_title')}</h3>
-          <form className="space-y-4">
+          <form
+            className="space-y-4"
+            onSubmit={async (e) => {
+              e.preventDefault();
+              const form = e.currentTarget;
+              const formDataObj = new FormData(form);
+              const data = {
+                name: formDataObj.get('name')?.toString() || '',
+                phone: formDataObj.get('phone')?.toString() || '',
+                message: formDataObj.get('message')?.toString() || '',
+              };
+
+              try {
+                const res = await fetch('/api/contact', {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify(data),
+                });
+
+                if (res.ok) {
+                  alert('送信が成功しました');
+                  form.reset();
+                } else {
+                  const result = await res.json();
+                  alert(`失敗: ${result.error}`);
+                }
+              } catch (err) {
+                alert('内部エラーが発生しました');
+                console.error(err);
+              }
+            }}
+          >
             <div>
               <label htmlFor="name" className="block text-sm font-medium">
                 {getMessage('contact', 'pg004_form_name')}
               </label>
-              <input id="name" type="text" className="w-full border px-3 py-2 rounded" />
+              <input id="name" name="name" type="text" className="w-full border px-3 py-2 rounded" />
             </div>
             <div>
               <label htmlFor="phone" className="block text-sm font-medium">
                 {getMessage('contact', 'pg004_form_phone')}
               </label>
-              <input id="phone" type="tel" className="w-full border px-3 py-2 rounded" />
+              <input id="phone" name="phone" type="tel" className="w-full border px-3 py-2 rounded" />
             </div>
             <div>
               <label htmlFor="message" className="block text-sm font-medium">
                 {getMessage('contact', 'pg004_form_message')}
               </label>
-              <textarea id="message" rows={4} className="w-full border px-3 py-2 rounded" />
+              <textarea id="message" name="message" rows={4} className="w-full border px-3 py-2 rounded" />
             </div>
             <button
               type="submit"
