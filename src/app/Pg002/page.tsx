@@ -16,21 +16,10 @@ const ScrollLottie = dynamic(() => import('@/components/ScrollLottie/ScrollLotti
 const Pg002: React.FC = () => {
   const sectionTeamRef = useRef<HTMLDivElement>(null);
   const sectionCompanyRef = useRef<HTMLDivElement>(null);
-  //const sectionPhotosRef = useRef<HTMLDivElement>(null);
   const getMessage = useMessage();
-  //const { locale } = useLocaleStore();
-  //const isCJK = locale === 'ja' || locale === 'zh';
+  const paragraphLines = getMessage('about', 'pg002_paragraph_2');
+  const pg002_section_company_profileLines = getMessage('about', 'pg002_section_company_profile');
 
-  //const [isMobile, setIsMobile] = useState(false);
-
-  // useEffect(() => {
-  //   const handleResize = () => {
-  //     setIsMobile(window.innerWidth < 768);
-  //   };
-  //   handleResize();
-  //   window.addEventListener('resize', handleResize);
-  //   return () => window.removeEventListener('resize', handleResize);
-  // }, []);
 
   const [isAtBottom, setIsAtBottom] = useState(false);
 
@@ -62,30 +51,16 @@ const Pg002: React.FC = () => {
         <div className="summaryText-container">
           <h1>{getMessage('about', 'pg002_title')}</h1>
           <p>{getMessage('about', 'pg002_paragraph_1')}</p>
-        </div>
+          {/* <p>{getMessage('about', 'pg002_paragraph_2')}</p> */}
+          {
+            Array.isArray(paragraphLines)
+              ? paragraphLines.map((line, idx) => (
+                <p key={idx} className="mb-4 leading-relaxed">{line}</p>
+              ))
+              : <p className="mb-4 leading-relaxed">{paragraphLines}</p>
+          }
 
-        {/* {!isMobile ? (
-          <div className="absolute top-[14%] right-[5%] z-[102] flex flex-row gap-[20px] ">
-            <div className={`info-card ${isCJK ? 'vertical' : 'horizontal'}`} onClick={() => scrollToSection(sectionTeamRef)}>
-              <h3>{getMessage('about', 'pg002_nav_team')}</h3>
-            </div>
-            <div className={`info-card ${isCJK ? 'vertical' : 'horizontal'}`} onClick={() => scrollToSection(sectionCompanyRef)}>
-              <h3>{getMessage('about', 'pg002_nav_company')}</h3>
-            </div>
-            <div className={`info-card ${isCJK ? 'vertical' : 'horizontal'}`} onClick={() => scrollToSection(sectionPhotosRef)}>
-              <h3>{getMessage('about', 'pg002_nav_photos')}</h3>
-            </div>
-          </div>
-        ) : ( */}
-          {/* 🧭 セクションナビカード - モバイル版 
-          <div className={styles.outerContainer}>
-            <InfoCardButton
-              onClickTeam={() => scrollToSection(sectionTeamRef)}
-              onClickCompany={() => scrollToSection(sectionCompanyRef)}
-              onClickPhotos={() => scrollToSection(sectionPhotosRef)}
-            />
-          </div> */}
-        {/* )} */}
+        </div>
       </div>
 
       {/* 👇 まだ最下部でなければ、スクロール誘導アニメーションを表示 */}
@@ -104,6 +79,13 @@ const Pg002: React.FC = () => {
             title={getMessage('about', 'pg002_section_company_title')}
             subtitle={getMessage('about', 'pg002_section_company_subtitle')}
           >
+          {
+            Array.isArray(pg002_section_company_profileLines)
+              ? pg002_section_company_profileLines.map((line, idx) => (
+                <p key={idx} className="mb-4 leading-relaxed">{line}</p>
+              ))
+              : <p className="mb-4 leading-relaxed">{pg002_section_company_profileLines}</p>
+          }
             <p>{getMessage('about', 'pg002_section_company_content')}</p>
             <ul>
               <li>{getMessage('about', 'pg002_section_company_list_1')}</li>
