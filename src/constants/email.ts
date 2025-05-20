@@ -1,3 +1,2 @@
-// === 1. constants/email.ts ===
-
-export const CONTACT_EMAIL = 'test@example.com'; // 假想邮箱
+// src/constants/email.ts
+export const PUBLIC_CONTACT_EMAIL = 'info@yourdomain.com'; // the mail show in web page
