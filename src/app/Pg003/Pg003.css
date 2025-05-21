@@ -1,11 +1,11 @@
 .services-section {
     position: relative;
     padding: 4rem 1rem;
-    background: linear-gradient(to bottom, #fbc2eb, #a6c1ee); /* 粉色渐变蓝紫色 */
+    background: transparent;
     border-radius: 2rem;
     margin: 0 auto;
     z-index: 0;
-    box-shadow: 0 0 30px rgba(250, 210, 255, 0.4); /* 柔和的光晕 */
+    
     overflow: hidden;
   }
   
@@ -13,7 +13,6 @@
     content: "";
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at top center, rgba(255, 255, 255, 0.3), transparent 70%);
     z-index: -1;
   }
   

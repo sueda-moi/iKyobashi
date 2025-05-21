@@ -1,32 +1,37 @@
 'use client';
-import "./sales.css"
+import "@/app/services/service.css"
 import Image from 'next/image';
 import { useMessage } from '@/lib/useMessage';
 
 const Finance: React.FC = () => {
   const getMessage = useMessage();
+  const paragraphLines = getMessage('finance', 'finance_paragraph');
 
   return (
-    <div className=" container">
-      <div className="flex w-full pb-[60px] relative h-[800px] mb-8">
+    <div className=" relative w-full h-screen overflow-hidden flex items-center justify-center">
+      <div className="flex w-full relative h-screen overflow-hidden">
         <Image src="/image/testsakura.jpg"
           alt="サマリー画像"
           fill
-          className="w-full block object-cover z-[100]" />
+          className="absolute inset-0 w-full h-full object-cover" />
       </div>
       <div className="summaryText-container-child">
-        <section className="services-section-child">
-          <h2 className="text-2xl font-bold text-center mb-8">
-            {getMessage('finance', 'finance_title')}
-          </h2>
-          <p className="text-base text-gray-700 max-w-3xl mx-auto text-center">
-            {getMessage('finance', 'finance_description')}
-          </p>
-        </section></div>
-      {/* <div className='childContent'>
 
+        <h2>
+          {getMessage('finance', 'finance_title')}
+        </h2>
+        <p>
+          {getMessage('finance', 'finance_description')}
+        </p>
+        {
+          Array.isArray(paragraphLines)
+            ? paragraphLines.map((line, idx) => (
+              <p key={idx} className="mb-4 leading-relaxed">{line}</p>
+            ))
+            : <p className="mb-4 leading-relaxed">{paragraphLines}</p>
+        }
+      </div>
 
-      </div> */}
 
     </div>
   );
