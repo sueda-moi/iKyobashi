@@ -65,12 +65,12 @@ const Footer: React.FC<FooterProps> = ({ floating = false }) => {
                 <div>
                   <p>{getMessage('footer', 'footer_tel')}：03-6231-0984</p>
                   {/* <p>{getMessage('footer', 'footer_mobile')}：xxx-xxxx-xxxx</p> */}
-                  <p>{getMessage('footer', 'footer_wechat')}：XXXXX</p>
+                 
                 </div>
                 <div style={{ textAlign: 'right' }}>
                   <p>{getMessage('footer', 'footer_fax')}：03-6736-0422</p>
                   <p>{getMessage('footer', 'footer_email')}：INFO@keikyocapital.com</p>
-                  <p>{getMessage('footer', 'footer_whatsapp')}：XXXXX</p>
+                  
                 </div>
               </div>
             </div>
@@ -97,14 +97,14 @@ const Footer: React.FC<FooterProps> = ({ floating = false }) => {
                 <div>
                   <p>{getMessage('footer', 'footer_tel')}：03-6231-0984</p>
                   {/* <p>{getMessage('footer', 'footer_mobile')}：xxx-xxxx-xxxx</p> */}
-                  <p>{getMessage('footer', 'footer_wechat')}：XXXXX</p>
+                
                 </div>
                 <div style={{ textAlign: 'right' }}>
                   {/* <p>ファクス（Fax)： 03-6736-0422</p>
               <p>メール（E-MAIL）： xxxxxx@MARSCAPITALJP.COM</p> */}
                   <p>{getMessage('footer', 'footer_fax')}：03-6736-0422</p>
                   <p>{getMessage('footer', 'footer_email')}：INFO@keikyocapital.com</p>
-                  <p>{getMessage('footer', 'footer_whatsapp')}：XXXXX</p>
+              
                 </div>
               </div>
             </div>
